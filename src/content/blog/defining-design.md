@@ -1,5 +1,5 @@
 ---
-title: Defining Design
+title: Defining design
 pubDate: "Mar 30 2015"
 description: "Renderable, insightful intentionality."
 ---

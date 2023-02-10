@@ -3,22 +3,22 @@ layout: "@layouts/Layout.astro"
 ---
 
 import BlogList from '@components/BlogList.astro';
-import { CODEPEN, EMAIL, GITHUB, REPO, TWITTER } from '@src/consts';
+import { EMAIL } from '@src/consts';
 
 export const email = `mailto:${EMAIL}`
 
-<nav class="list-inline m-top-1">
-  <a href="/about">About</a>
-  <a href="/resume">Résumé</a>
-  <a href={email}>Email</a>
-  <a href={TWITTER} target="_blank">Twitter</a>
-  <a href={GITHUB} target="_blank">GitHub</a>
-  <a href={CODEPEN} target="_blank">CodePen</a>
-</nav>
-
-I'm Chris, a designer and front-end developer for [Indiana University](https://uits.iu.edu/) in [Bloomington](https://www.visitbloomington.com/). I build enterprise web software for students, advisors, and faculty. I'm interested in accessibility, [reactive programming](/about#reactive-programming) and [design systems](/about#design-systems).
+I'm Chris, a designer and front-end developer for [Indiana University](https://uits.iu.edu/) in [Bloomington](https://www.visitbloomington.com/). I specialize in web software, accessibility, [reactive programming](/reactive-programming), and [design systems](/design-systems).
 
 Outside of work, I play [board games](https://www.kickstarter.com/profile/basham), listen to [audiobooks](https://www.audible.com/) and [podcasts](https://99percentinvisible.org/), and run trails in [sandals](https://twitter.com/chrisbasham/status/303623854297841664).
+
+<nav class="list-inline m-top-1">
+  <a href="/resume">Résumé</a>
+  <a href="/colophon">Colophon</a>
+  <a href={email}>Email</a>
+  <a href="https://twitter.com/chrisbasham">Twitter</a>
+  <a href="https://github.com/basham">GitHub</a>
+  <a href="https://codepen.io/basham">CodePen</a>
+</nav>
 
 ## Blog
 

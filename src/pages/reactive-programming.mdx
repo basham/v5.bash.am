@@ -1,0 +1,14 @@
+---
+layout: "@layouts/Layout.astro"
+title: "Reactive programming"
+---
+
+In 2013, I started experimenting with the [AngularJS](https://angularjs.org/) framework for building functional prototypes, such as new interfaces for students [viewing their billing information](/work/iu-student-billing), [searching for courses](/work/iu-course-search), and [registering for classes](/work/ks-course-registration). Each proof-of-concept built on the last, teaching me about REST APIs, minification, version control ([git](https://git-scm.com/) and [GitHub](https://github.com/)), accessibility ([WAI-ARIA](https://en.wikipedia.org/wiki/WAI-ARIA)), build systems ([Grunt](https://gruntjs.com/), [gulp.js](https://gulpjs.com/), and [webpack](https://webpack.js.org/)), NoSQL databases ([Firebase](https://firebase.google.com/)), and responsive design.
+
+From 2014 to 2016, I studied CSS, trying to determine best practices for [using CSS units](https://gist.github.com/basham/2175a16ab7c60ce8e001), [integrating media queries](https://gist.github.com/basham/3b24062dfaecaa712a68), [organizing project files](https://gist.github.com/basham/877db54fffb08e47bd39), and [setting style naming conventions](/talks/architecting-css).
+
+With experience in all these front-end fundamentals, I shifted away from the AngularJS framework, so I could experiment with different combinations of rendering libraries and data flow architectures. The teams I worked with at Indiana University quickly adopted the [React](https://reactjs.org/) rendering library, given the straightforward API and growing community adoption. For a couple products developed in 2015, we paired React with a simplified implementation of the [Flux data flow pattern](https://facebook.github.io/flux/), called [Reflux](https://github.com/reflux/refluxjs). In practice, Reflux failed to scale well with complex applications, and I continued my exploration.
+
+Inspired by the [Cycle.js](https://cycle.js.org/) framework, I started learning the [RxJS](https://github.com/ReactiveX/rxjs) reactive library. After integrating it into a number of experiments and products in 2016, I was convinced this tool was flexible and low-level enough to power any data flow architecture, without going stale.
+
+In 2017, I abstracted what I learned into a library called [Conduit](https://github.com/indiana-university/conduit). It is primarily a set of patterns to help develop reactive, functional user interfaces. It is also a set of utilities to simplify things a front-end developer may do with RxJS ([`conduit-rxjs`](https://github.com/indiana-university/conduit/tree/master/packages/conduit-rxjs)), including how to connect RxJS streams to rendering libraries ([`conduit-rxjs-react`](https://github.com/indiana-university/conduit/tree/master/packages/conduit-rxjs-react)). Indiana University has used Conduit in a number of products, and as of 2019, it is now publicly released.
