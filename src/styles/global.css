@@ -20,6 +20,8 @@
 	--fs-1: calc(18rem/16);
 	--fs-2: calc(24rem/16);
 	--fs-3: calc(32rem/16);
+
+	--radius: calc(2rem/16);
 }
 
 html {
@@ -28,11 +30,12 @@ html {
 
 body {
 	color: var(--color-text);
-	font-family: "Libre FranklinVariable", Verdana, sans-serif;
+	font-display: block;
+	font-family: "Libre FranklinVariable", sans-serif;
 	font-size: var(--fs-1);
 	line-height: 1.4;
 	margin: auto;
-	max-width: 48ch;
+	max-width: 36em;
 	padding: 2em 1em;
 }
 
@@ -99,6 +102,18 @@ li {
 
 main {
 	margin-top: 2em;
+}
+
+main::after {
+	--size: 0.5em;
+	border: var(--radius) solid var(--color-link);
+	border-radius: var(--radius);
+	content: "";
+	display: block;
+	height: var(--size);
+	margin: 2em auto 0;
+	transform: rotate(45deg);
+	width: var(--size);
 }
 
 ol,
