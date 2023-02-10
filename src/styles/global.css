@@ -93,7 +93,12 @@ h2 {
 
 h3 {
 	font-size: var(--fs-1);
+	font-weight: 600;
 	margin: 2em 0 0;
+}
+
+h3 + p {
+	margin-top: 0;
 }
 
 img {
