@@ -3,18 +3,39 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-body {
-	font-family: "Libre Franklin", Verdana, sans-serif;
-	margin: auto;
-	padding: 20px;
-	max-width: 65ch;
-	text-align: left;
-	background-color: #fff;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+:root {
+	/* https://oklch.com/#15,0.2,255,100 */
+	--color-255-15: #000b1f;
+	/* https://oklch.com/#75,0.2,255,100 */
+	--color-255-75: #73b1ff;
+	/* https://oklch.com/#95,0.2,255,100 */
+	--color-255-95: #e4f0ff;
+	/* https://oklch.com/#75,0.2,285,100 */
+	--color-285-75: #a6a1ff;
+	--color-base: var(--color-255-15);
+	--color-link: var(--color-255-75);
+	--color-text: var(--color-255-95);
+	--color-visited: var(--color-285-75);
+
+	--fs-1: calc(18rem/16);
+	--fs-2: calc(24rem/16);
+	--fs-3: calc(32rem/16);
 }
+
+html {
+	background-color: var(--color-base);
+}
+
+body {
+	color: var(--color-text);
+	font-family: "Libre FranklinVariable", Verdana, sans-serif;
+	font-size: var(--fs-1);
+	line-height: 1.4;
+	margin: auto;
+	max-width: 48ch;
+	padding: 2em 1em;
+}
+
 h1,
 h2,
 h3,
@@ -23,45 +44,107 @@ h5,
 h6,
 strong,
 b {
-	color: #222;
+	font-weight: 800;
 }
+
 a {
-	color: #3273dc;
+	color: inherit;
 }
-nav a {
-	margin-right: 10px;
+
+a {
+	color: var(--color-link);
+	text-decoration: underline;
 }
-textarea {
-	width: 100%;
-	font-size: 16px;
+
+a:focus {
+	outline: calc(2em/16) solid var(--color-link);
+	outline-offset: calc(2em/16);
 }
-input {
-	font-size: 16px;
+
+a:visited {
+	color: var(--color-visited);
 }
-content {
-	line-height: 1.6;
+
+blockquote {
+	border: 1px solid #999;
+	color: var(--color-text);
+	padding: 2px 0 2px 20px;
+	margin: 0;
+	font-style: italic;
 }
-table {
-	width: 100%;
+
+h1 {
+	font-size: var(--fs-3);
+	margin: 0;
 }
+
+h2 {
+	font-size: var(--fs-2);
+	margin: 2em 0 0;
+}
+
+h3 {
+	font-size: var(--fs-1);
+	margin: 2em 0 0;
+}
+
 img {
 	max-width: 100%;
 	height: auto;
 }
-code {
-	padding: 2px 5px;
-	background-color: #f2f2f2;
+
+li {
+	margin-top: 0.5em;
 }
+
+main {
+	margin-top: 2em;
+}
+
+ol,
+ul {
+	margin: 1em 0 0;
+	padding: 0 0 0 1.5em;
+}
+
+p {
+	margin: 1em 0 0;
+}
+
 pre {
 	padding: 1rem;
 }
+
 pre > code {
 	all: unset;
 }
-blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+
+table {
+	width: 100%;
+}
+
+.list-inline {
+	display: flex;
+	gap: 1.5em;
+	list-style-type: "";
+	padding: 0;
+}
+
+.list-inline > * {
+	flex-wrap: wrap;
+	margin: 0;
+}
+
+.m-top-1 {
+	margin-top: 1em;
+}
+
+.sr-only:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
 }

@@ -1,36 +1,29 @@
 ---
-import '@fontsource/libre-franklin';
+import '@fontsource/libre-franklin/variable.css';
+import '@fontsource/libre-franklin/variable-italic.css';
 import BaseHead from '@components/BaseHead.astro';
+import FormattedDate from '@components/FormattedDate.astro';
 import Header from '@components/Header.astro';
+import { SITE_TITLE } from '@src/consts';
 
-const { frontmatter } = Astro.props;
-const { description, title } = frontmatter
+const { frontmatter = {} } = Astro.props;
+const { description, pubDate, title } = frontmatter
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			.title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			}
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
 	</head>
 	<body>
-		<Header />
+		<Header title={title} />
 		<main>
-			<article>
-				<h1 class="title">{title}</h1>
-				<slot />
-			</article>
+			<h1>{title || SITE_TITLE}</h1>
+			{pubDate &&
+				<div>
+					<FormattedDate date={pubDate} />
+				</div>
+			}
+			<slot />
 		</main>
 	</body>
 </html>

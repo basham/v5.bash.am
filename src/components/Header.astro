@@ -1,26 +1,37 @@
 ---
-import HeaderLink from './HeaderLink.astro';
-import { GITHUB, SITE_TITLE, TWITTER } from '../consts';
+import { SITE_TITLE } from "@src/consts";
+
+const { title } = Astro.props;
 ---
 
 <header>
-	<div class="title">
-		{SITE_TITLE}
-	</div>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/about">About</HeaderLink>
-		<HeaderLink href={TWITTER} target="_blank">Twitter</HeaderLink>
-		<HeaderLink href={GITHUB} target="_blank">GitHub</HeaderLink>
-	</nav>
+	<a href="/">
+		<span aria-hidden="true" class="icon">B</span>
+		<span class:list={[ { 'sr-only': !title }]}>{SITE_TITLE}</span>
+	</a>
 </header>
 
 <style>
-	header {
-		margin: 0 0 2em;
+	a,
+	a:visited {
+		align-items: center;
+		color: var(--color-text);
+		display: inline-flex;
+		font-weight: bold;
+		gap: 1em;
+		text-decoration: none;
 	}
-	.title {
-		font-size: calc(24rem/16);
-		margin: 0.5em 0;
+
+	.icon {
+		--size: 2.5rem;
+		align-items: center;
+		background-color: var(--color-link);
+		border-radius: calc(2rem/16);
+		color: var(--color-base);
+		display: inline-flex;
+		font-size: var(--fs-2);
+		height: var(--size);
+		justify-content: center;
+		width: var(--size);
 	}
 </style>

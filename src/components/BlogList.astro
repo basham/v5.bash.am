@@ -23,15 +23,13 @@ const posts = (await getCollection("blog")).sort(
 		list-style-type: none;
 		padding: unset;
 	}
+
 	ul li {
 		display: flex;
 	}
+
 	ul li :global(time) {
-		flex: 0 0 130px;
+		flex: 0 0 8em;
 		font-style: italic;
-		color: #595959;
-	}
-	ul li a:visited {
-		color: #8e32dc;
 	}
 </style>

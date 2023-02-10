@@ -5,18 +5,21 @@ layout: "@layouts/Layout.astro"
 import BlogList from '@components/BlogList.astro';
 import { CODEPEN, EMAIL, GITHUB, REPO, TWITTER } from '@src/consts';
 
-I'm Chris, a designer and front-end developer for [Indiana University](https://uits.iu.edu/) in [Bloomington](https://www.visitbloomington.com/). I work on a cross-functional Agile team, building enterprise web software for students, advisors, and faculty. I'm interested in accessibility, [reactive programming](/about#reactive-programming) and [design systems](/about#design-systems).
+export const email = `mailto:${EMAIL}`
 
-For more details, explore my [work](#work), [articles](#articles), [talks](#talks), and [résumé](/resume)&thinsp;&mdash;&thinsp;or [contact me](#contact).
+<nav class="list-inline m-top-1">
+  <a href="/about">About</a>
+  <a href="/resume">Résumé</a>
+  <a href={email}>Email</a>
+  <a href={TWITTER} target="_blank">Twitter</a>
+  <a href={GITHUB} target="_blank">GitHub</a>
+  <a href={CODEPEN} target="_blank">CodePen</a>
+</nav>
+
+I'm Chris, a designer and front-end developer for [Indiana University](https://uits.iu.edu/) in [Bloomington](https://www.visitbloomington.com/). I build enterprise web software for students, advisors, and faculty. I'm interested in accessibility, [reactive programming](/about#reactive-programming) and [design systems](/about#design-systems).
 
 Outside of work, I play [board games](https://www.kickstarter.com/profile/basham), listen to [audiobooks](https://www.audible.com/) and [podcasts](https://99percentinvisible.org/), and run trails in [sandals](https://twitter.com/chrisbasham/status/303623854297841664).
 
 ## Blog
 
 <BlogList />
-
-## Contact
-
-Reach me at [{EMAIL}](mailto:{EMAIL}).
-
-Follow me on [Twitter]({TWITTER}), [GitHub]({GITHUB}), and [CodePen]({CODEPEN}).
