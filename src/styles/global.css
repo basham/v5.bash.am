@@ -76,6 +76,11 @@ blockquote {
 	font-style: italic;
 }
 
+footer,
+main {
+	margin-top: 2em;
+}
+
 h1 {
 	font-size: var(--fs-3);
 	margin: 0;
@@ -98,10 +103,6 @@ img {
 
 li {
 	margin-top: 0.5em;
-}
-
-main {
-	margin-top: 2em;
 }
 
 main::after {
@@ -143,6 +144,10 @@ table {
 	gap: 1.5em;
 	list-style-type: "";
 	padding: 0;
+}
+
+.list-inline--center {
+	justify-content: center;
 }
 
 .list-inline > * {
