@@ -25,28 +25,12 @@ html {
 
 body {
 	color: var(--color-text);
-	font-display: block;
 	font-family: "Libre FranklinVariable", sans-serif;
 	font-size: var(--fs-1);
 	line-height: 1.4;
 	margin: auto;
 	max-width: 36em;
 	padding: 2em 1em;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-strong,
-b {
-	font-weight: 800;
-}
-
-a {
-	color: inherit;
 }
 
 a {
@@ -87,7 +71,6 @@ h2 {
 
 h3 {
 	font-size: var(--fs-1);
-	font-weight: 600;
 	margin: 2em 0 0;
 }
 
@@ -152,10 +135,6 @@ table {
 .list-inline > * {
 	flex-wrap: wrap;
 	margin: 0;
-}
-
-.m-top-1 {
-	margin-top: 1em;
 }
 
 .sr-only:not(:focus):not(:active) {
