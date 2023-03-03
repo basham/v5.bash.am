@@ -10,10 +10,10 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/mdx": "0.16.0",
-		"@astrojs/rss": "2.1.0",
-		"@astrojs/sitemap": "1.0.1",
+		"@astrojs/mdx": "0.17.2",
+		"@astrojs/rss": "2.1.1",
+		"@astrojs/sitemap": "1.1.0",
 		"@fontsource/libre-franklin": "4.5.11",
-		"astro": "2.0.10"
+		"astro": "2.0.17"
 	}
 }
