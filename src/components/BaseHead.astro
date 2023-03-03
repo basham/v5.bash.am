@@ -5,10 +5,10 @@ import '@src/styles/global.css';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
-  config,
-  description,
-  image = '/placeholder-social.jpg',
-  title  
+	config,
+	description,
+	image = '/placeholder-social.jpg',
+	title
 } = Astro.props;
 const _title = config === 'ignoreTitle' ? null : title
 const pageTitle = [_title, SITE_TITLE].filter((t) => t).join(' - ')
