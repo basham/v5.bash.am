@@ -1,13 +1,11 @@
 ---
 import { SITE_TITLE } from "@src/consts";
-
-const { title } = Astro.props;
 ---
 
 <header>
 	<a href="/">
 		<img alt="" class="logo" src="/logo.svg" />
-		<span class:list={[ { 'sr-only': !title }]}>{SITE_TITLE}</span>
+		<span>{SITE_TITLE}</span>
 	</a>
 </header>
 
