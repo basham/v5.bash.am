@@ -6,11 +6,7 @@ const { title } = Astro.props;
 
 <header>
 	<a href="/">
-		<span aria-hidden="true" class="logo">
-			<span class="logo__a"></span>
-			<span class="logo__b"></span>
-			<span class="logo__c">B</span>
-		</span>
+		<img alt="" class="logo" src="/logo.svg" />
 		<span class:list={[ { 'sr-only': !title }]}>{SITE_TITLE}</span>
 	</a>
 </header>
@@ -21,49 +17,13 @@ const { title } = Astro.props;
 		align-items: center;
 		color: var(--color-text);
 		display: inline-flex;
-		font-weight: bold;
-		gap: 1em;
+		font-size: var(--fs-2);
+		gap: 1rem;
 		text-decoration: none;
 	}
 
-	a:focus {
-		outline-offset: calc(12rem/16);
-	}
-
 	.logo {
-		position: relative;
-		--size: 2.5rem;
-		align-items: center;
-		color: var(--color-base);
-		display: inline-flex;
-		font-size: var(--fs-2);
-		height: var(--size);
-		justify-content: center;
-		transform: rotate(-22.5deg);
-		width: var(--size);
-	}
-
-	.logo__a,
-	.logo__b {
-		--size: calc(2.5rem - calc(var(--radius) * 2));
-		border: var(--radius) solid var(--color-visited);
-		border-radius: var(--radius);
-		content: "";
-		display: block;
-		height: var(--size);
-		position: absolute;
-		width: var(--size);
-		top: 0;
-		left: 0;
-	}
-
-	.logo__b {
-		background-color: var(--color-link);
-		box-shadow: inset 0 0 0 var(--radius) var(--color-base);
-		transform: rotate(45deg);
-	}
-
-	.logo__c {
-		position: relative;
+		height: 4rem;
+		width: 4rem;
 	}
 </style>

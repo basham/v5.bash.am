@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+	<style>
+		:root {
+			--color-255-15: #000b1f;
+			--color-255-75: #73b1ff;
+			--color-285-75: #a6a1ff;
+		}
+	</style>
+	<rect height="100%" fill="var(--color-255-15)" width="100%" />
+	<g transform="rotate(22.5)" transform-origin="50% 50%">
+		<rect fill="var(--color-255-75)" height="36" rx="2" width="36" x="6" y="6" />
+		<rect fill="var(--color-255-15)" height="32" width="32" x="8" y="8" />
+		<rect fill="var(--color-285-75)" height="30" width="30" x="9" y="9" />
+	</g>
+	<g transform="rotate(-22.5)" transform-origin="50% 50%">
+		<rect fill="var(--color-255-15)" height="38" width="38" x="5" y="5" />
+		<rect fill="var(--color-285-75)" height="36" rx="2" width="36" x="6" y="6" />
+		<rect fill="var(--color-255-15)" height="32" width="32" x="8" y="8" />
+		<rect fill="var(--color-255-75)" height="30" width="30" x="9" y="9" />
+		<g fill="none" stroke="var(--color-255-15)" stroke-linecap="square" stroke-linejoin="round" stroke-width="4">
+			<polyline points="13,13 13,35" />
+			<polyline points="13,35 24,35 24,24 13,24" />
+			<polyline points="30,35 35,35" />
+		</g>
+	</g>
+</svg>
