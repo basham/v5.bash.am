@@ -4,20 +4,32 @@
 			--color-255-15: #000b1f;
 			--color-255-75: #73b1ff;
 			--color-285-75: #a6a1ff;
+			--color-a: var(--color-255-15);
+		}
+		.colors-1 {
+			--color-b: var(--color-255-75);
+			--color-c: var(--color-285-75);
+		}
+		.colors-2 {
+			--color-b: var(--color-285-75);
+			--color-c: var(--color-255-75);
 		}
 	</style>
-	<rect height="100%" fill="var(--color-255-15)" width="100%" />
+	<defs>
+		<symbol id="square">
+			<rect fill="var(--color-a)" height="38" rx="3" width="38" x="5" y="5" />
+			<rect fill="var(--color-b)" height="36" rx="2" width="36" x="6" y="6" />
+			<rect fill="var(--color-a)" height="32" width="32" x="8" y="8" />
+			<rect fill="var(--color-c)" height="30" width="30" x="9" y="9" />
+		</symbol>
+	</defs>
+	<rect height="100%" fill="var(--color-a)" width="100%" />
 	<g transform="rotate(22.5)" transform-origin="50% 50%">
-		<rect fill="var(--color-255-75)" height="36" rx="2" width="36" x="6" y="6" />
-		<rect fill="var(--color-255-15)" height="32" width="32" x="8" y="8" />
-		<rect fill="var(--color-285-75)" height="30" width="30" x="9" y="9" />
+		<use class="colors-1" href="#square"></use>
 	</g>
 	<g transform="rotate(-22.5)" transform-origin="50% 50%">
-		<rect fill="var(--color-255-15)" height="38" width="38" x="5" y="5" />
-		<rect fill="var(--color-285-75)" height="36" rx="2" width="36" x="6" y="6" />
-		<rect fill="var(--color-255-15)" height="32" width="32" x="8" y="8" />
-		<rect fill="var(--color-255-75)" height="30" width="30" x="9" y="9" />
-		<g fill="none" stroke="var(--color-255-15)" stroke-linecap="square" stroke-linejoin="round" stroke-width="4">
+		<use class="colors-2" href="#square"></use>
+		<g fill="none" stroke="var(--color-a)" stroke-linecap="square" stroke-linejoin="round" stroke-width="4">
 			<polyline points="13,13 13,35" />
 			<polyline points="13,35 24,35 24,24 13,24" />
 			<polyline points="30,35 35,35" />
