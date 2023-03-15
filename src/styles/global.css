@@ -13,8 +13,9 @@
 	--color-visited: var(--color-285-75);
 
 	--fs-1: calc(18rem/16);
-	--fs-2: calc(24rem/16);
-	--fs-3: calc(32rem/16);
+	--fs-2: calc(20rem/16);
+	--fs-3: calc(24rem/16);
+	--fs-4: calc(32rem/16);
 
 	--radius: calc(2rem/16);
 }
@@ -60,22 +61,19 @@ main {
 }
 
 h1 {
-	font-size: var(--fs-3);
+	font-size: var(--fs-4);
 	margin: 0;
 }
 
 h2 {
-	font-size: var(--fs-2);
-	margin: 2em 0 0;
+	font-size: var(--fs-3);
+	margin: 1.5em 0 0;
 }
 
 h3 {
-	font-size: var(--fs-1);
-	margin: 2em 0 0;
-}
-
-h3 + p {
-	margin-top: 0;
+	font-size: var(--fs-2);
+	font-weight: bold;
+	margin: 1.5em 0 0;
 }
 
 img {
