@@ -16,7 +16,7 @@ const years = Object.keys(postsByYear).reverse();
 				{
 					postsByYear[year].map((post) => (
 						<li>
-							<a href={`/blog/${post.slug}`}>{post.data.title}</a>
+							<a href={`/${post.slug}`}>{post.data.title}</a>
 						</li>
 					))
 				}
