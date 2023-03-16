@@ -4,6 +4,13 @@ pubDate: "Apr 04 2016"
 description: Agile practices at small scale.
 ---
 
+import ImageFigure from '@components/ImageFigure.astro';
+import dotVotingImage from '@assets/2016-02-27-dot-voting.jpg'
+import kanbanBoardImage from '@assets/2016-02-27-kanban-board.jpg'
+import tibetanBellsImage from '@assets/2016-02-27-tibetan-bells.jpg'
+import teamImage from '@assets/2016-02-27-team.jpg'
+import wireframeImage from '@assets/2016-02-27-wireframe.jpg'
+
 In late February, Bloomington hosted a 3-day hackathon with the goal of designing, building, and launching a website for [Indiana.com](http://indiana.com/). It brought together about 20 professionals and students with expertise in design, development, writing, curation, legal practice, and business.
 
 I joined as one of four staff to assist with the weekend’s activities. Being trained in [Agile Scrum software development techniques][scrum] and as a member of practicing teams for the last 2.5 years, I possess skills and perspective distinct from my fellow staff. I would rely on this expertise to assist me in my primary role as a facilitator of team processes. Essentially, I was to be a [Scrum master][scrum master].
@@ -29,17 +36,7 @@ Throughout most of the weekend, participants organically divided into three func
 2. What will you do?
 3. What is hindering you?
 
-<jade>
-figure.Figure
-  a.Figure-imgLink(href="https://cloud.githubusercontent.com/assets/347558/14236333/ad50b7d2-f9e1-11e5-9473-f939b762a8f9.jpg")
-    img(
-      alt="Tibetan bells",
-      src="https://cloud.githubusercontent.com/assets/347558/14236333/ad50b7d2-f9e1-11e5-9473-f939b762a8f9.jpg",
-      width="960",
-      height="720")
-  figcaption.Figure-caption.Figure-paragraph
-    | The meeting would start with the chiming of Tibetan bells. The sharp resonance called attention and silenced side conversations. As a facilitator, this technique was more powerful than competing over the noise with my own voice.
-</jade>
+<ImageFigure alt="Tibetan bells" src={tibetanBellsImage}>The meeting would start with the chiming of Tibetan bells. The sharp resonance called attention and silenced side conversations. As a facilitator, this technique was more powerful than competing over the noise with my own voice.</ImageFigure>
 
 Since most were unfamiliar with standup meetings, it was helpful  to write these questions on a poster, hung on a prominent wall. Answers to Question 3 were written on a whiteboard, labeled as *blockers*. If responses turned into conversations, then they were marked down as *parking lot* items to continue following the meeting. As blockers and parking lots are resolved, they’re erased from the board.
 
@@ -53,17 +50,7 @@ The next meeting time was determined immediately following the current meeting. 
 
 Throughout the weekend, groups separated between two primary workspaces in adjacent buildings. Especially with this disjoined arrangement, it was necessary to have some standard method of realtime communication. [Slack](https://slack.com/) was the perfect solution. Public and private channels isolated discussions concerning each group of work. Individuals could track and join conversations, engaging at their pace, wherever they may be.
 
-<jade>
-figure.Figure
-  a.Figure-imgLink(href="https://cloud.githubusercontent.com/assets/347558/14236608/36c93b02-f9e6-11e5-96d2-60699fea1bde.jpg")
-    img(
-      alt="one participant shares progress of work on a TV to the team",
-      src="https://cloud.githubusercontent.com/assets/347558/14236608/36c93b02-f9e6-11e5-96d2-60699fea1bde.jpg",
-      width="960",
-      height="640")
-  figcaption.Figure-caption.Figure-paragraph
-    | Work, such as generating color palette options, was occasionally demonstrated for feedback from the team. Participants followed up with additional comments via Slack.
-</jade>
+<ImageFigure alt="One participant shares progress of work on a TV to the team" src={teamImage}>Work, such as generating color palette options, was occasionally demonstrated for feedback from the team. Participants followed up with additional comments via Slack.</ImageFigure>
 
 While individuals may quickly learn names within their group of peers, it was increasingly difficult to remember names for those in sibling groups. Name tags were tethered to their owners on lanyards, but after the first day, their annoyance outweighed their utility. I asked participants by name to speak when it was their turn during standup meetings, for the sake of everyone learning each other’s name. This feeble effort was never sufficient. Without everyone knowing names, it became difficult for individuals to ask others to join them in parking lot conversations. It contributed to an anxiety that felt that if the discussion didn’t happen immediately during their time at standup, then the opportunity for conversation would be lost once the team split back into working groups.
 
@@ -73,17 +60,7 @@ Slack could be a decent method to learning names. Assuming team members assign p
 
 The start of Saturday kicked off assignments of work to individuals and groups. Due to the diversity of work needed, the design and development group especially needed some method of tracking progress, and a [Kanban board](http://leankit.com/learn/kanban/kanban-board/) provided the most appropriate structure. A poster board was divided into three columns, labeled as *To Do*, *Doing*, and *Done*. Participants wrote down tasks on sticky notes, discussed them and refined them, then placed them in the *To Do* column. Individuals would sign their name to tasks they claimed, whenever it was ready to be started.  When tasks complete, they rest in the *Done* column. Before assigning oneself to another task in the *To Do* column, they must first contribute to anything in the *Doing* column, if possible. At a glance, those within and outside of the working group can see the progress of tasks shift from left to right.
 
-<jade>
-figure.Figure
-  a.Figure-imgLink(href="https://cloud.githubusercontent.com/assets/347558/14236413/4d845d20-f9e3-11e5-8d32-d66756dcd2d8.jpg")
-    img(
-      alt="Kanban board, mounted on a wall on poster board",
-      src="https://cloud.githubusercontent.com/assets/347558/14236413/4d845d20-f9e3-11e5-8d32-d66756dcd2d8.jpg",
-      width="720",
-      height="960")
-  figcaption.Figure-caption.Figure-paragraph
-    | A Kanban board was used to track progress of technical tasks, each written on a sticky note. Tasks would start in the leftmost #[em To Do] column and eventually collect in the rightmost #[em Done] column.
-</jade>
+<ImageFigure alt="Kanban board, mounted on a wall on poster board" src={kanbanBoardImage}>A Kanban board was used to track progress of technical tasks, each written on a sticky note. Tasks would start in the leftmost *To Do* column and eventually collect in the rightmost *Done* column.</ImageFigure>
 
 The Kanban board worked well on Saturday, but its use waned as the weekend progressed. The board wasn’t being updated, and it didn’t always reflect what was being said during the standup meetings. Participants would depart from the event for hours at a time, and others may not be knowledgable or aware enough to continue tasks. Tasks became blocked by third party hinderances that would not be resolved during the weekend. *To Do* tasks lingered when the person who wrote them wasn’t available to explain their purpose in more detail when another was ready to own a task.
 
@@ -93,17 +70,7 @@ While the board was useful, it was only as useful as participants were willing t
 
 Much of the first half of the hackathon involved generating concepts for the company’s mission and the weekend’s product. For these exercises, participants were allocated time to anonymously contribute to the pool of concepts. Once idea generation started to settle down, participants silently absorbed the concepts and then voted for the most compelling ones using an allotment of six red dots. The results of this [dot voting](https://en.wikipedia.org/wiki/Dotmocracy) reduced the concepts to a more manageable subset of ideas, which then were further refine during an open discussion.
 
-<jade>
-figure.Figure
-  a.Figure-imgLink(href="https://cloud.githubusercontent.com/assets/347558/14236353/05d13080-f9e2-11e5-8a48-8ce22665bfe7.jpg")
-    img(
-      alt="dot voting on poster boards",
-      src="https://cloud.githubusercontent.com/assets/347558/14236353/05d13080-f9e2-11e5-8a48-8ce22665bfe7.jpg",
-      width="960",
-      height="720")
-  figcaption.Figure-caption.Figure-paragraph
-    | Product concepts targeted different audiences who would get value from Indiana.com, including residents, businesses, tourists, and those relocating. Participants placed red sticker dots near concepts they felt was most compelling.
-</jade>
+<ImageFigure alt="Dot voting on poster boards" src={dotVotingImage}>Product concepts targeted different audiences who would get value from Indiana.com, including residents, businesses, tourists, and those relocating. Participants placed red sticker dots near concepts they felt was most compelling.</ImageFigure>
 
 To keep the voting pure, no one should be influenced by knowing the person who contributed the concept. However, participants inevitably asked for clarification, and an answer demanded the contributor to respond. Such responses often twisted into an *idea pitch* or plea, rather than adhering to an objective explanation.
 
@@ -117,21 +84,11 @@ Although it would demand more upfront time, dot voting would probably be more ef
 
 By mid-Saturday, progress started to stagnate. Most of the team was wanting to proceed with a concept, while one thought the decision was premature. After some deliberation, I interrupted and provided a mechanism known as *thumb voting* to come to a resolution. Using this method, the team agreed to devote 20 minutes for additional sketching, before the technique was used again to choose a concept. It turned out most of the newly generated ideas were just refinements or enhancements that would be infeasible to work on during the limited timeframe of the weekend.
 
-<jade>
-figure.Figure
-  a.Figure-imgLink(href="https://cloud.githubusercontent.com/assets/347558/14236471/790101c8-f9e4-11e5-8ce9-c0b81bdfa395.jpg")
-    img(
-      alt="homepage sketches of Indiana.com",
-      src="https://cloud.githubusercontent.com/assets/347558/14236471/790101c8-f9e4-11e5-8ce9-c0b81bdfa395.jpg",
-      width="960",
-      height="720")
-  figcaption.Figure-caption.Figure-paragraph
-    | The chosen concept for Indiana.com highlights places, people, and events which best portray unique characteristics of the state.
-</jade>
+<ImageFigure alt="Wireframe sketches of the Indiana.com homepage" src={wireframeImage}>The chosen concept for Indiana.com highlights places, people, and events which best portray unique characteristics of the state.</ImageFigure>
 
 When team decisions, such as just described, cannot be quickly or confidently determined, thumb voting can help to effectively arrive at a consensus. A team member shares a proposal, and all team members silently determine how they will vote. After a count, everyone will simultaneously vote one of three ways with a hand: Raising a thumb up means the individual is fully supportive of the proposal. A thumb directed sideways means the individual will accept the proposal, but they may have reservations about it. A downward thumb means the individual rejects the proposal. Proposals are accepted as decisions only if everyone voted with a thumbs up or sideways. Those voting with a thumb down must explain what it would take for them to change their vote, and it is the responsibility of the proposer or a moderator to facilitate a resolution. If that discussion results in a new or amended proposal, then voting starts again until a proposal is unanimously accepted as the decision.
 
-Thumb voting is conceptually identical to [Agile’s Fist of Five voting](http://agileforall.com/learning-with-fist-of-five-voting/), except that voting options are consolidated to minimize the chance of [analysis paralysis](https://en.wikipedia.org/wiki/Analysis_paralysis).
+Thumb voting is conceptually identical to Agile's "Fist of Five" voting, except that voting options are consolidated to minimize the chance of [analysis paralysis](https://en.wikipedia.org/wiki/Analysis_paralysis).
 
 ## Value participation over tools
 

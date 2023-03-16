@@ -12,6 +12,7 @@
 	--color-text: var(--color-255-95);
 	--color-visited: var(--color-285-75);
 
+	--fs-0: calc(16rem/16);
 	--fs-1: calc(18rem/16);
 	--fs-2: calc(20rem/16);
 	--fs-3: calc(24rem/16);
@@ -58,6 +59,16 @@ blockquote {
 footer,
 main {
 	margin-top: 2em;
+}
+
+figure {
+	margin: 1em 0 0;
+}
+
+figcaption {
+	border-bottom: var(--radius) solid var(--color-link);
+	font-size: var(--fs-0);
+	padding: var(--fs-1) 0;
 }
 
 h1 {
@@ -143,4 +154,8 @@ table {
 	position: absolute;
 	white-space: nowrap;
 	width: 1px;
+}
+
+.u-flex {
+	display: flex;
 }

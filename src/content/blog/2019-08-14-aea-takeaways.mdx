@@ -4,19 +4,14 @@ pubDate: "Aug 14 2019"
 description: Sketchnotes and insights from a web design conference.
 ---
 
-A couple weeks ago, I attended the web design conference [An Event Apart in Washington, D.C.](https://aneventapart.com/event/washington-dc-2019) The 3 days and 17 talks covered not only how to technically build a better web, but how to meaningfully include others in the process.
+import ImageFigure from '@components/ImageFigure.astro';
+import sketchnoteImage from '@assets/2019-07-31-aea-sketchnote-16.jpg'
 
-I took [<b>sketchnotes for each talk</b>](https://twitter.com/chrisbasham/status/1156932722075623424), distilled those notes into relevant insights and major themes, and shared them with my colleagues. It will be an ongoing effort to experiment with these ideas in my work and personal life.
+A couple weeks ago, I attended the web design conference [An Event Apart](https://aneventapart.com/) in Washington, D.C. The 3 days and 17 talks covered not only how to technically build a better web, but how to meaningfully include others in the process.
 
-<jade>
-figure.Figure
-  a.Figure-imgLink(href="https://user-images.githubusercontent.com/347558/62989210-1f495100-be15-11e9-83f6-8e406cd5ce07.jpg")
-    img(
-      alt="Sketchnote of a talk, with quotes, question prompts, and lessons"
-      src="https://user-images.githubusercontent.com/347558/62989210-1f495100-be15-11e9-83f6-8e406cd5ce07.jpg" width="810" height="486")
-  figcaption.Figure-caption.Figure-paragraph
-    | #[a.Link(href="https://twitter.com/chrisbasham/status/1156932946487578624") Sketchnote of talk 16/17]: #[a.Link(href="https://aneventapart.com/event/washington-dc-2019#s16756") #[cite Inclusive, By Design]], by #[a.Link(href="http://feather.ca/") Derek Featherstone].
-</jade>
+I took [sketchnotes for each talk](https://twitter.com/chrisbasham/status/1156932722075623424), distilled those notes into relevant insights and major themes, and shared them with my colleagues. It will be an ongoing effort to experiment with these ideas in my work and personal life.
+
+<ImageFigure alt="Sketchnote of a talk, with quotes, question prompts, and lessons" src={sketchnoteImage}>[Sketchnote of talk 16 of 17](https://twitter.com/chrisbasham/status/1156932946487578624): *Inclusive, By Design*, by [Derek Featherstone](http://feather.ca/).</ImageFigure>
 
 ## Share
 
