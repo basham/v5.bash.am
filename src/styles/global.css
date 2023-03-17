@@ -23,6 +23,7 @@
 
 html {
 	background-color: var(--color-base);
+	-webkit-text-size-adjust: 100%;
 }
 
 body {
