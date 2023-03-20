@@ -1,0 +1,22 @@
+---
+const { date } = Astro.props;
+const datetime = date.toISOString();
+const label = date.toLocaleDateString('en-us', {
+	day: 'numeric',
+	month: 'long',
+	year: 'numeric'
+});
+---
+
+{date && (
+	<div>
+		<time datetime={datetime}>{label}</time>
+	</div>
+)}
+
+<style>
+	div {
+		font-size: var(--fs-0);
+		margin: 1em 0 2.25em;
+	}
+</style>

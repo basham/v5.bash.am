@@ -2,7 +2,7 @@
 import '@fontsource/libre-franklin/variable.css';
 import '@fontsource/libre-franklin/variable-italic.css';
 import BaseHead from '@components/BaseHead.astro';
-import FormattedDate from '@components/FormattedDate.astro';
+import PublishedDate from '@components/PublishedDate.astro';
 import Header from '@components/Header.astro';
 import { SITE_TITLE } from '@src/consts';
 
@@ -18,11 +18,7 @@ const { pubDate, title } = frontmatter
 		<Header title={title} />
 		<main>
 			<h1>{title || SITE_TITLE}</h1>
-			{pubDate &&
-				<div>
-					<FormattedDate date={pubDate} />
-				</div>
-			}
+			<PublishedDate date={pubDate} />
 			<slot />
 		</main>
 	</body>
