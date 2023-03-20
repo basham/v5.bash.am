@@ -1,7 +1,7 @@
 ---
 const { date } = Astro.props;
-const datetime = date.toISOString();
-const label = date.toLocaleDateString('en-us', {
+const datetime = date?.toISOString();
+const label = date?.toLocaleDateString('en-us', {
 	day: 'numeric',
 	month: 'long',
 	year: 'numeric'
