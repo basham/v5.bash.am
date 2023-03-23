@@ -68,7 +68,7 @@ The following is a simple implementation of this style of routing. Code and data
 			};
 			const params = (new URL(document.location)).searchParams;
 			const page = params.get('page');
-			const entry = routes[page] || routes['404']
+			const entry = routes[page] || routes['404'];
 			import(entry);
 		</script>
 	</body>
