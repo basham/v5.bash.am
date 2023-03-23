@@ -86,6 +86,10 @@ blockquote {
 	padding: 0 0 0 1em;
 }
 
+code {
+	overflow-wrap: break-word;
+}
+
 code,
 pre {
 	color: var(--color-code);
