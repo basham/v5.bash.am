@@ -10,6 +10,9 @@ export default defineConfig({
 	image: {
 		service: 'astro/assets/services/sharp'
 	},
-	integrations: [mdx(), sitemap()],
+	integrations: [
+		mdx(),
+		sitemap()
+	],
 	site: 'https://bash.am'
 });

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+	<style>
+		.fill-a {
+			fill: #000b1f;
+		}
+		.fill-b {
+			fill: #73b1ff;
+		}
+		.fill-c {
+			fill: #a6a1ff;
+		}
+		.stroke-a {
+			stroke: #000b1f;
+		}
+	</style>
+	<rect class="fill-a" height="100%" width="100%" />
+	<g transform="rotate(22.5)">
+		<svg x="7.4" y="-11">
+			<rect class="fill-a" height="38" rx="3" width="38" x="5" y="5" />
+			<rect class="fill-b" height="36" rx="2" width="36" x="6" y="6" />
+			<rect class="fill-a" height="32" width="32" x="8" y="8" />
+			<rect class="fill-c" height="30" width="30" x="9" y="9" />
+		</svg>
+	</g>
+	<g transform="rotate(-22.5)">
+		<svg x="-11" y="7.4">
+			<rect class="fill-a" height="38" rx="3" width="38" x="5" y="5" />
+			<rect class="fill-c" height="36" rx="2" width="36" x="6" y="6" />
+			<rect class="fill-a" height="32" width="32" x="8" y="8" />
+			<rect class="fill-b" height="30" width="30" x="9" y="9" />
+			<g class="stroke-a" fill="none" stroke-linecap="square" stroke-linejoin="round" stroke-width="4">
+				<polyline points="13,13 13,35" />
+				<polyline points="13,35 24,35 24,24 13,24" />
+				<polyline points="30,35 35,35" />
+			</g>
+		</svg>
+	</g>
+</svg>
