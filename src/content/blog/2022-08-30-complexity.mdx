@@ -1,0 +1,268 @@
+---
+title: Warning signs of front-end complexity
+pubDate: Aug 30 2022
+description: ""
+---
+
+import CodeFigure from "@components/CodeFigure.astro";
+
+Over 20 years ago, the web had a technological breakthrough, when [JavaScript was able to make server requests](<https://en.wikipedia.org/wiki/Ajax_(programming)>). Link navigation and form submissions were no longer the only way to make user interfaces on the web. Since then, generations of JavaScript libraries, frameworks, and tooling have transformed the way the web is developed.
+
+These technologies give us the possibility to improve the user experience and developer experience. However, they are often misused or misunderstood. Instead of making something more usable or more accessible, they often result in the opposite.
+
+This article will outline three different warning signs to look out for, the effect on the user or developer experience, and alternative techniques that should be considered.
+
+1. Warning: Paths after the hash (#) in the URL
+2. Warning: Loading indicators on page load
+3. Warning: Submitted forms that don't reload or redirect the page
+
+## Warning: Paths after the hash (#) in the URL
+
+Client-side routing is a technique meant to increase the speed of navigation by having JavaScript transform the page instead of waiting for a response from the server. This can be useful if the browser already has all the data it needs to render the page. However, this technique tends to create more problems than it solves, and it is difficult to correctly implement. As such, product teams should expand typical testing scenarios.
+
+When using a link, verify the following:
+
+1. Refreshing or reloading works as expected.
+2. Using the browser back and forward buttons works as expected.
+3. Pasting the URL into another browser, window, or tab works as expected.
+4. Using [in-page links](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#linking_to_an_element_on_the_same_page) (such as screen-reader skip links and "On this page" navigation) works as expected.
+5. The page title updates to be similar or identical to the primary heading.
+6. If using client-side rendering: Focus moves to the primary heading and a screen reader announces the heading.
+
+Look for URLs ending with a hash symbol and a path, such as `#/path/to/page`. A full URL could look like `example.com/sub-page/?foo=bar#/path/to/page`. This "hash routing" technique creates complications by:
+
+- Hijacking the use of in-page links (see previous item 4), forcing developers to use JavaScript rather than HTML to move focus on the same page.
+- Placing the path before query parameters, causing a usability issue.
+
+This hash routing technique is a primary clue that client-side routing is implemented, but more sophisticated implementations may not have this clue.
+
+Client-side routing typically adds even more technical complications. The implementation may:
+
+- Use third-party dependencies, which increases the code sent to users.
+- Force the code for the entire app to be downloaded up front, instead of the code needed for each page on demand.
+- Share cached data among page transitions and various UI components. This typically leads to additional tooling and code to manage state and refresh stale data.
+
+Overcoming all these issues is rarely worth the effort. If the technical goal is to have a single static launch page and the client manage routing, a better approach is to make the path a URL parameter (`?page=path/to/page`). This technique can:
+
+- Refresh the page.
+- Simplify routing.
+- Reduce the need for state management.
+- Avoid interfering with in-page navigation.
+- Place the path before secondary query parameters (such as `?page=path/to/page&foo=bar`).
+
+The following is a simple implementation of this style of routing. Code and data for rendering pages are dynamically loaded.
+
+<CodeFigure label="Static response: example.com/?page=garden">
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Default page title</title>
+	</head>
+	<body>
+		<main id="main"></main>
+		<script type="module">
+			const routes = {
+				'garden': '/garden.js',
+				'404': '/404.js'
+			};
+			const params = (new URL(document.location)).searchParams;
+			const page = params.get('page');
+			const entry = routes[page] || routes['404']
+			import(entry);
+		</script>
+	</body>
+</html>
+```
+</CodeFigure>
+
+<CodeFigure label="garden.js">
+```js
+// Update page title
+document.title = 'Garden';
+
+// Fetch data, if needed.
+const data = await fetch('/api/garden');
+
+// Generate HTML based on the data.
+const html = '...';
+
+// Render the HTML to the page.
+const main = document.getElementById('main');
+main.innerHTML = html;
+```
+</CodeFigure>
+
+## Warning: Loading indicators on page load
+
+A loading indicator is a useful way to inform the user that a system process is busy. However, if this occurs immediately after navigating to a new page, it likely means that JavaScript is requesting more data from the backend before rendering.
+
+In more detail:
+
+1. The browser loads a blank or empty page.
+2. JavaScript requests data and renders a loading indicator.
+3. Server responds with data or an error.
+4. JavaScript renders based on the data or error.
+
+Instead, [embed data in HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#embedding_data_in_html). The server can use the same APIs that would have been requested with JavaScript, but this work is done up front. This simplifies the implementation and the user experience:
+
+1. The browser loads a blank or empty page.
+2. JavaScript immediately renders based on the embedded data.
+
+By having the server provide the initial data on load, it renders faster, removes the need for a loading indicator, and shifts the burden of handling network errors from the client to the server.
+
+To embed data, the server will have to respond with some dynamic HTML. If that's happening anyway, then it is best for the server to also manage the page title (as it could be dynamic as well) and identify the code needed to supplement the page. If the server is already doing this work, then it is likely little more work to switch from using the query-parameter-style links from the previous Warning section (`?page=path/to/page`) to just standard links (`/path/to/page`).
+
+The following is an updated version of the sample code from the previous Warning section.
+
+<CodeFigure label="template.html">
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title><!-- Page title --></title>
+	</head>
+	<body>
+		<main id="main"></main>
+		<script id="data" type="application/json">
+			<!-- Page data -->
+		</script>
+		<script type="module" src="<!-- Page source code -->"></script>
+	</body>
+</html>
+```
+</CodeFigure>
+
+<CodeFigure label="Dynamic response: example.com/garden/backyard">
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Backyard garden</title>
+	</head>
+	<body>
+		<main id="main"></main>
+		<script id="data" type="application/json">
+			{
+				"plants": [...],
+				"notes": "..."
+			}
+		</script>
+		<script type="module" src="/garden.js"></script>
+	</body>
+</html>
+```
+</CodeFigure>
+
+<CodeFigure label="garden.js">
+```js
+// Get embedded data.
+const data = JSON.parse(document.getElementById('data').text);
+
+// Generate HTML based on the data.
+const html '...';
+
+// Render the HTML to the page.
+const main = document.getElementById('main');
+main.innerHTML = html;
+```
+</CodeFigure>
+
+Furthermore, the server rather than the browser could render the page contents, especially if there is little to no interactivity beyond links and form submissions. With Node, some of the same tools used in the browser can be used on the server. That means for example, a page that was rendered by a browser with React could instead be [rendered by the server with React](https://reactjs.org/docs/react-dom-server.html).
+
+Server-side rendering like this is complicated if wanting to use it on an interactive page. The common solution is called hydration. The server renders the page, so it looks fast. However, to make it interactive, JavaScript renders it again, so it can mount the UI components, their state, and event listeners in memory. This is double the work to make it perceive as if the page is fast. A user could click on something interactive and it could fail to respond, simply because JavaScript has yet to finish its invisible loading process.
+
+[Resumability](https://thenewstack.io/javascript-hydration-is-a-workaround-not-a-solution/) is a new technique pioneered by the [Qwik framework](https://qwik.builder.io/) that solves the problems of hydration. Content rendered by the server is immediately interactive, and JavaScript does not re-render the page. Static pages require no client-side JavaScript. This technique and its implementations should be studied more.
+
+In the meantime, consider what on the page is truly interactive or needs dynamic data.
+
+- Try using [custom web components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) to provide interactivity.
+- Try rendering substantial sections of static content with the server.
+- Try embedding multiple, small JavaScript apps on the page, only where dynamic content is needed.
+
+## Warning: Page does not reload or redirect when submitting a form
+
+The default behavior of a form submission results in a call to the server. The server then responds with redirecting or reloading the page. Creating a new document may open that document. Purchasing a product may redirect the user to a confirmation page. Changing filters on a search page may reload the current page with the new applied values.
+
+With JavaScript, it is easy to prevent this default form behavior and insert custom logic, such as [client-side form validation](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation). In the following example, the submit event is prevented. Trigger a loading state, such as disabling the submit button and rendering a loading indicator. If the form is valid, send a request to the server and handle the response in some way, be it successful or not. If the form is invalid, show any validation errors, so the user can make corrections.
+
+<CodeFigure>
+```js
+formElement.addEventListener('submit', await (event) => {
+	event.preventDefault();
+	setFormState('loading');
+	if (isFormValid()) {
+		const response = await fetch(/* ... */);
+		if (response.ok) {
+			setFormState('success');
+			handleFormSuccess(response);
+		} else {
+			setFormState('error');
+			handleFormError(response);
+		}
+	} else {
+		setFormState('error');
+		handleInvalidForm();
+	}
+});
+````
+
+</CodeFigure>
+
+If the form would trigger a call to the server anyway, it may be better to allow the default submit behavior to continue on its own if it passes client-side validation. In this case, the additional loading state may not be needed, and the server could include any success or error information in the pages to which it redirects or reloads.
+
+<CodeFigure>
+```js
+formElement.addEventListener('submit', (event) => {
+	if (!isFormValid()) {
+		event.preventDefault();
+		setFormState('error');
+		handleInvalidForm();
+	}
+});
+```
+</CodeFigure>
+
+In some cases with form submission, there may not be a need for validation or JavaScript at all. In the following example, a form is used to control a list of plants. It is currently showing plants in the user's garden, but it could be changed to show all plants in the database or ones the user has favorited. Hidden inputs declare the database id of the garden and a planting season filter that is controllable in another form elsewhere on the page.
+
+<CodeFigure>
+```html
+<form method="get">
+	<input type="hidden" name="gardenId" value="abc123">
+	<input type="hidden" name="season" value="spring">
+	<label for="showField">Show</label>
+	<select id="showField" name="show">
+		<option value="all">All plants</option>
+		<option value="garden" selected>In my garden</option>
+		<option value="favorites">Favorites</option>
+	</select>
+	<button type="submit">Apply</button>
+</form>
+```
+</CodeFigure>
+
+When the form is submitted with this GET method:
+
+1. The form data is automatically serialized into a query string (`?gardenId=abc123&season=spring&show=favorites`).
+2. Without an explicit "action" attribute on the form, the query string is applied to the current page, causing a refresh.
+3. The server renders the page with the requested data. That data could be embedded in the HTML (see the previous Warning section).
+
+## Conclusion
+
+The maturity of the JavaScript language and its tools have opened incredible possibilities for developers and designers. However, in our effort to explore these technologies and techniques, we often overlook the fundamentals. In doing so, we:
+
+- Incur unnecessary technical and design debt
+- Increase the possibility of bugs
+- Slow down development time
+- Make the product less usable and less accessible
+- Obstruct the user and developer experience
+
+We can and should continue using JavaScript where appropriate. We should be critical about any practices that increase the use of code and dependencies in the browser, when there may be lower-level and simpler solutions available. Complexity should be added into projects as needed. Complexity should not be the default.
+
+## More resources
+
+- [_Let's make accessibility boring again_](https://medium.com/kinandcartacreated/lets-make-accessibility-boring-again-ed4b8da66128)
+- [Interview](https://www.youtube.com/watch?v=hKDn-Q4zRPg) with [Adrian Roselli](https://adrianroselli.com/) about his "under-engineered" series of articles. The latest article is [_Under-Engineered Multi-Selects_](https://adrianroselli.com/2022/05/under-engineered-multi-selects.html).
+- [_Rendering on the Web_](https://web.dev/rendering-on-the-web/)
+- [Rendering patterns](https://www.patterns.dev/posts/rendering-patterns)
+- [_The balance has shifted away from SPAs_](https://nolanlawson.com/2022/05/21/the-balance-has-shifted-away-from-spas/)

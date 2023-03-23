@@ -14,5 +14,10 @@ export default defineConfig({
 		mdx(),
 		sitemap()
 	],
+	markdown: {
+		shikiConfig: {
+			theme: 'css-variables'
+		}
+	},
 	site: 'https://bash.am'
 });

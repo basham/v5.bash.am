@@ -15,3 +15,10 @@ const { alt = '', format = 'webp', src, quality = 'high' } = Astro.props;
 	</a>
 	<figcaption><slot /></figcaption>
 </figure>
+
+<style>
+	figcaption {
+		border-bottom: var(--2px) solid var(--color-link);
+		padding: var(--fs-1) 0;
+	}
+</style>
