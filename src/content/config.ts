@@ -1,15 +1,12 @@
 import { defineCollection, z } from 'astro:content';
 
 const writings = defineCollection({
-	// Type-check frontmatter using a schema
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		// Transform string to Date object
 		pubDate: z
-			.string()
-			.or(z.date())
-			.transform((val) => new Date(val)),
+			.date()
+			.transform((d) => new Date(d.getTime() + Math.abs(d.getTimezoneOffset() * 60000))),
 		updatedDate: z
 			.string()
 			.optional()
