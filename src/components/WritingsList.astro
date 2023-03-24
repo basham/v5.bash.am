@@ -1,8 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import { groupBy } from '@util/groupBy.js'
+import { slugFromPost } from '@util/slugFromPost';
 
-const posts = (await getCollection('blog'))
+const posts = (await getCollection('writings'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const postsByYear = groupBy(posts, (post) => post.data.pubDate.getFullYear());
 const years = Object.keys(postsByYear).reverse();
@@ -16,7 +17,7 @@ const years = Object.keys(postsByYear).reverse();
 				{
 					postsByYear[year].map((post) => (
 						<li>
-							<a href={`/${post.slug}`}>{post.data.title}</a>
+							<a href={`/${slugFromPost(post)}`}>{post.data.title}</a>
 						</li>
 					))
 				}
