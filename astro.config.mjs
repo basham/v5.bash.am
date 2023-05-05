@@ -8,7 +8,9 @@ export default defineConfig({
 		assets: true
 	},
 	image: {
-		service: 'astro/assets/services/sharp'
+		service: {
+			entrypoint: 'astro/assets/services/sharp'
+		}
 	},
 	integrations: [
 		mdx(),
