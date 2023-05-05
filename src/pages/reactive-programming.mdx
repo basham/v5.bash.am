@@ -3,7 +3,7 @@ layout: "@layouts/Layout.astro"
 title: "Reactive programming"
 ---
 
-Web applications tend to use dynamic user interfaces. Rather than only using links (navigation) and buttons (form submissions) to drive a website, JavaScript can facilitate more complex feedback loops between the user and the system. This back-and-forth takes time. Sometimes it feels immediate. Sometimes it takes noticablely longer. Reactive programming tools and techniques are designed for asyncronous interactions, meaning that it can handle both immediate and delayed responses.
+Web applications tend to use dynamic user interfaces. Rather than only using links (navigation) and buttons (form submissions) to drive a website, JavaScript can facilitate more complex feedback loops between the user and the system. This back-and-forth takes time. Sometimes it feels immediate. Sometimes it takes noticeably longer. Reactive programming tools and techniques are designed for asynchronous interactions, meaning that it can handle both immediate and delayed responses.
 
 I've been exploring reactive programming in the context of modern rendering libraries, front-end architecture, and state management since 2013.
 
@@ -17,4 +17,4 @@ In 2019, I organized a workshop titled [*Reactive Components with RxJS*](https:/
 
 The next year, I explored some [alternative reactive patterns with RxJS](https://github.com/basham/rx-ui-patterns), inspired by React Hooks. This would allow stateful logic with RxJS to be reusable and be more testable.
 
-In 2022, I experimented with [Reactive Controllers](https://lit.dev/docs/composition/controllers/). This provides the same benefit of React Hooks, yet it is built using JavaScript classes, without any depedencies. It requires a [small integration](https://gist.github.com/basham/1874b7420de98312a75dcb4112d70ae5) to get these controllers working with a rendering library, such as React. This technique replaced an old Reflux architecture on one of my team's projects.
+In 2022, I experimented with [Reactive Controllers](https://lit.dev/docs/composition/controllers/). This provides the same benefit of React Hooks, yet it is built using JavaScript classes, without any dependencies. It requires a [small integration](https://gist.github.com/basham/1874b7420de98312a75dcb4112d70ae5) to get these controllers working with a rendering library, such as React. This technique replaced an old Reflux architecture on one of my team's projects.
