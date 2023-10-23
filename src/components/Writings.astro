@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import { slugFromPost } from '@util/slugFromPost';
+
+const posts = (await getCollection('writings'))
+	.filter(({ data }) => import.meta.env.PROD ? data.draft !== true : true)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<ul>
+{
+	posts.map((post) => (
+		<li>
+			<a href={`/${slugFromPost(post)}`}>{post.data.title}</a> ({post.data.pubDate.getFullYear()})
+		</li>
+	))
+}
+</ul>
