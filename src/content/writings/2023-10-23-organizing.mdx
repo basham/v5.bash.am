@@ -1,0 +1,101 @@
+---
+title: Organizing design work
+pubDate: 2023-10-23
+description: "Use dates, times, references, and descriptions."
+draft: true
+---
+
+We can improve the way we and our coworkers work by being thoughtful in the ways we organize folders, files, and other project materials. Specifically, we can use dates, times, references, and descriptions to help scale work output, be more productive, and better reflect on the work that has been done.
+
+## 1. Project log
+
+A project log documents notable things about a project, organized chronologically. Each entry should include the date, what happened, and who was involved. Entries could describe when a project was kicked off, when major meetings happened, when a new user research initiative started, and when development on a particular feature started or finished. Entries could link to reports, mockups, references, plans, issues, etc.
+
+Capturing these details makes it easier to remember the journey of your team and reflect on the challenges along the way. It can be a reference for reports and discussions with stakeholders. For example (links are represented with underlined text):
+
+- **May 9, 2023:** Nora and Raj introduce the project (see <u>ST-2725</u>) to Katia.
+- **May 11, 2023:** Katia and Raj draft <u>research plan</u>.
+- **May 17, 2023:** Katia and Raj refine research plan. Katia shares <u>Figma mockups</u>.
+- **May 22 to May 31, 2023:** Katia and Raj conduct user research interviews with eight participants.
+- **May 30, 2023:** Katia and Raj share early research findings and prototype with Nora.
+- **June 8, 2023:** Katia shares user research report and latest prototype with Nora and Raj.
+
+## 2. Design decision document
+
+A design decision document captures why a design decision was made. This could be useful when a team member or stakeholder questions a decision of something designed weeks earlier or when there is a production support question from a user encountering a problem. Entries should include the date, a description of the decision and why it was made, and who was involved in making the decision. For example:
+
+- **May 28, 2023:** Katia decided to move the secondary navigation from a side panel (vertically placed links) to sub-navigation (horizontally placed links). This will simplify the mobile experience, especially since there will only be three links for the initial development phase. This may revert back as the number of links grows.
+- **June 1, 2023:** Based on user feedback (May 22 to May 31), the team decided to split the creation form into multiple steps. This should slow down the user, help them better understand their options, and reduce errors.
+- **June 14, 2023:** Nora and Raj decided the search field should require 3 or more characters. This should result in reasonably accurate search results and acceptable server performance. The team should add analytics to monitor search queries. This will allow us to fine-tune server performance. Eventually, the 3-character requirement may no longer be needed.
+
+## 3. User research sessions
+
+User research sessions can produce many files: the session recording and transcript, session notes, emails, etc. To keep it organized, those files should be grouped in a common folder. The folder should be named in a consistent manner, so that it is straightforward when conducting multiple research sessions and easy to reference. As such, the folder name should include:
+
+- the date and time of the session
+- the name of the participant
+
+To guarantee folders are sorted chronologically, the first part of the name should be the year, month, and day of the research session, such as <span class="u-nowrap">`2023-10-20`</span>.
+
+Since multiple research sessions can occur in the same day, it is more precise to also include the time of the session. The time can be formatted in 24-hour "military" format to guarantee correct sort order, such as `1330` meaning <span class="u-nowrap">`1:30 PM`</span>.
+
+The researcher is more likely to remember details about the participant than the time the session occurred. So, the third part of the folder name should include the participant's name.
+
+Together, the folders could be named like:
+
+- `2023-05-22-1630 Ashish`
+- `2023-05-23-1400 Silvia`
+- `2023-05-24-1100 Gita`
+- `2023-05-31-1300 Dylan`
+- `2023-08-03-1330 Gita`
+- `2023-08-15-1330 Yuri`
+- `2023-08-18-1000 Yuri`
+
+In this format, it is easy to notice there was over a two-month gap between sessions (skipping June and July). You can also infer there was a follow-up session with Yuri, because there was only a three-day gap between the two concurrent sessions they were participating in.
+
+## 4. User research projects
+
+User research projects should also be organized with folders, because they can also involve multiple files, such as the research plan, research report, recruitment templates, etc. Similar to the user research session folder names, project folder names should include the date the project started and a description of the project. If a project is related to a specific issue in the team's ticket tracking system (such as Jira), then that reference (e.g. <span class="u-nowrap">`ST-2740`</span>) should be included in the description. For example:
+
+- `2023-05-22 ST-2740 User Interviews`
+- `2023-06-27 Prototype Feedback 1`
+- `2023-08-01 Prototype Feedback 2`
+
+It may be best to keep the session folders separate from the project folders. Let's say the culmination of a user research project is a user research report. The report may reference sessions conducted before the project officially started. If session folders are nested under their respective project folders, then that may result in:
+
+- duplicated session folders (to ensure all relevant materials are centralized)
+- awkward references to deep parts of another project folder (to avoid duplicating materials)
+
+Instead, perhaps there is a "User Research Session" folder that contains all the session folders and a "User Research Projects" folder that contains all the project folders. This separation: 
+
+- makes it easier to understand and implement the organization scheme (rather than having to invent a structure for every design activity)
+- gives a place for session folders to be stored, even if they are not clearly part of a project initiative (such as a follow up user session based on a tangential topic)
+- allows multiple reports to equally reference the same session without any particular project "owning" the session (which can enhance insight discovery)
+
+Folder aliases or shortcuts could also be placed in the project folders to reference related sessions. This would be a good compromise, which maintains both the centralization of related materials and the separation of different materials.
+
+## 5. Figma pages
+
+Dates, references, and descriptions are also useful to organize [Figma pages](https://help.figma.com/hc/en-us/articles/360038511293-Create-and-manage-pages). For example, this design exploration resulted in five prototypes used during two months of user research sessions. It culminated in another page ("Dev Phase 1") that is meant to guide the development team during the initial implementation of the software.
+
+- `2023-05-22 Prototype v1`
+- `2023-05-25 Prototype v2`
+- `2023-05-30 Prototype v3`
+- `2023-06-02 Prototype v4`
+- `2023-07-06 Prototype v5`
+- `2023-08-25 Dev Phase 1`
+
+## 6. Figma flows
+
+Each page in Figma may contain any number of interactive "flows." [Figma flows](https://help.figma.com/hc/en-us/articles/360040314193-Guide-to-prototyping-in-Figma) are the starting points for users to navigate among different frames ("screens"), which simulates the experience with a user interface.
+
+The development team may organize their work according to user stories in a ticket tracking system. To align with the team, the designer can create a unique flow for each user story that a development team needs to understand, implement, and verify the work. The links to these flows can be included in the user story. Flows can be labeled with the unique reference number and short description of its corresponding user story. For example:
+
+- `ST-2933 Create item`
+- `ST-2934 View item`
+- `ST-2935 Edit item`
+- `ST-2936 Delete item`
+
+## Conclusion
+
+The design of our work process can facilitate the design of better solutions for users of our work. We can be kind to our colleagues and our future selves by being more deliberate and disciplined in what we capture about a project and how we document it. Oftentimes, all that is needed to improve the usability of our work is to add dates, times, references, and descriptions to the things we make.

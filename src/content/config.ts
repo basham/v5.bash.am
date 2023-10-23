@@ -6,7 +6,8 @@ const writings = defineCollection({
 		description: z.string(),
 		pubDate: z.date().transform((d) =>
 			new Date(d.getTime() + Math.abs(d.getTimezoneOffset() * 60000))
-		)
+		),
+		draft: z.boolean().optional()
 	})
 });
 

@@ -4,6 +4,7 @@ import { groupBy } from '@util/groupBy.js'
 import { slugFromPost } from '@util/slugFromPost';
 
 const posts = (await getCollection('writings'))
+	.filter(({ data }) => import.meta.env.PROD ? data.draft !== true : true)
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const postsByYear = groupBy(posts, (post) => post.data.pubDate.getFullYear());
 const years = Object.keys(postsByYear).reverse();

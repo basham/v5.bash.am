@@ -199,3 +199,7 @@ table {
 .u-flex {
 	display: flex;
 }
+
+.u-nowrap {
+	white-space: nowrap;
+}
