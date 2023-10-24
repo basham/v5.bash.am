@@ -7,7 +7,7 @@ const writings = defineCollection({
 		pubDate: z.date().transform((d) =>
 			new Date(d.getTime() + Math.abs(d.getTimezoneOffset() * 60000))
 		),
-		draft: z.boolean().optional()
+		draft: z.boolean().optional().default(false)
 	})
 });
 

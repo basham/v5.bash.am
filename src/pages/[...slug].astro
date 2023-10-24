@@ -5,7 +5,7 @@ import { slugFromPost } from '@util/slugFromPost';
 
 export async function getStaticPaths() {
 	return (await getCollection('writings'))
-		.filter(({ data }) => import.meta.env.PROD ? data.draft !== true : true)
+		.filter(({ data }) => import.meta.env.PROD ? !data.draft : true)
 		.map((post) => {
 			const slug = slugFromPost(post)
 			return {
