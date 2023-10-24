@@ -1,0 +1,224 @@
+---
+title: "Build the right thing with impact maps"
+pubDate: 2023-10-24
+description: "…"
+draft: true
+---
+
+import ImageFigure from '@components/ImageFigure.astro';
+import ImpactMapFigure from '@components/ImpactMapFigure.astro';
+
+Impact maps can be a useful technique for anyone trying to achieve a goal. They are especially useful for designers and software development teams.
+
+**Note:** This article is largely based on my [*Design With Impact* conference workshop](https://github.com/basham/swit-workshop-impact) (2022).
+
+## Build the thing right
+
+With the Agile development process, software teams release features and updates in consistent intervals, such as every two weeks. This iteration provides opportunity for the team to get feedback, to learn, and to adapt. Every team will implement this methodology in different ways. Ultimately, the goal of any development methodology is to deliver software in the right way, that is predictable and results in high quality work.
+
+## Build the right thing
+
+A software team may be able to deliver software in the right way, but it doesn't mean the team is delivering the right solutions. [Product discovery](https://herbig.co/product-discovery/) does this. There are many techniques a team can use to help during this phase.
+
+Product discovery is the first phase in the development process. Once a team identifies the right thing to do, then the team can execute on delivering that right solution. What the team does in product discovery feeds into the work the team does in Agile.
+
+Both the discovery and delivery phases are needed. Even if it is the most accessible, usable, and delightful piece of software the team can deliver — if it doesn't solve the right problem, it is wasted effort. Users will be frustrated because they can't do what they really want. Stakeholders will be frustrated because their vision is not being achieved. The team will be frustrated because their work feels meaningless.
+
+In contrast, if the right solution is known but there is no means of executing it well, then the idea is never implemented, it is delivered late, or it has a poor user experience.
+
+There is no prescribed way to conduct the work in the discovery phase. Teams need to find their own way that fits best according to their situation and constraints. The activities themselves can be grouped into two main categories: the problem space and the solution space. Successful teams invest more time in the problem space than the solution space.
+
+When working in the problem space, ask the question, "Why is this a problem worth solving?" This is answered when the team:
+
+- aligns with stakeholders about goals, priorities, and measurements of success
+- conducts user research to understand what they do and why they do it
+
+When working in the solution space, ask the question, "What solutions are worth pursuing?" In these activities:
+
+- ideate to explore possibilities
+- create prototypes
+- test those possible solutions
+- refine solutions based on what is learned
+
+## Impact mapping
+
+Impact mapping is a discovery technique useful for making progress in both the problem space and the solution space. It helps the team:
+
+- stay aligned with stakeholders
+- identify and prioritize research questions
+- explore different solutions
+- plan to test those solutions
+
+Impact maps are arranged in a hierarchy, with each level having a unique meaning. A goal that is trying to be achieved is at the start, with everything after it representing things that will help to achieve that goal.
+
+The book [*Impact Mapping*](https://www.impactmapping.org/book.html) introduces [two example impact maps](https://www.impactmapping.org/example.html), illustrated in different styles. The [first example](https://www.impactmapping.org/assets/im_template.png) arranges the levels in labeled columns, while the [second example](https://www.impactmapping.org/assets/gaming_example.png) arranges the content as a [mind map](https://en.wikipedia.org/wiki/Mind_map).
+
+This structure has a number of unique properties:
+
+- The goal is clearly positioned at the start of the map.
+- The number of items in the map roughly communicates the scope.
+- The order of the items in the map communicates priorities.
+- The connections of the items exposes assumptions.
+
+Generally, the hierarchy of an impact map is composed of five levels.
+
+The first three levels (goal, actors, and impacts) represent the problem space. Here, focus on aligning and researching. This is the space where it can be beneficial to collaborate with stakeholders.
+
+1. Goal (align)
+2. Actors (align + research)
+3. Impacts (align + research)
+
+The last two levels (deliverables and experiments) represent the solution space. Here, focus on ideating, creating, testing, and refining. This is the space where stakeholders shouldn't be too involved.
+
+4. Deliverables (ideate + create + refine)
+5. Experiments (test)
+
+## 1. Goal
+
+Defining a goal is the most important thing to do, since all subsequent work depends on it. There should be one goal at the start of an impact map. The goal should answer the question, "What are you trying to achieve?" A goal can be used in any number of domains:
+
+- Personal goals may involve improving your health, improving relationships, improving your financial situation, or having new experiences.
+- Business goals may involve saving time, making money, or reducing costs.
+- Governmental goals is often more ambitious and broad. It may involve social welfare, the economy, infrastructure, or security.
+
+In 1962, President John F. Kennedy outlined a goal in his [*We choose to go to the Moon* speech](https://en.wikipedia.org/wiki/We_choose_to_go_to_the_Moon). [He says](https://www.rice.edu/kennedy):
+
+> [W]e shall send to the moon… a giant rocket…, and then return it safely to earth…, and do it first before this decade is out…. [N]ew hopes for knowledge and peace are there.
+
+In July 1969, the crew of [Apollo 11](https://en.wikipedia.org/wiki/Apollo_11) achieved the goal set by JFK. They landed on the moon, explored for over two hours, and returned safely to Earth.
+
+This goal can be examined through the lens of the [SMART pattern](https://en.wikipedia.org/wiki/SMART_criteria). The goal was:
+
+- **Specific:** It involved the moon, a rocket, and the United States.
+- **Measurable:** The crew collected 47.5 pounds of lunar material. The crew returned and survived. The U.S. was the first nation to do it.
+- **Achievable:** The U.S. government invested in new companies, in tens of thousands of new jobs, in new technology, and in new materials.
+- **Relevant:** The U.S. vowed to be first to the moon, so that, as JFK said in his speech, "we shall not see space filled with weapons of mass destruction, but with instruments of knowledge and understanding."
+- **Time-based:** The deadline was December 31, 1969.
+
+A mission statement is not a goal. [NASA's mission](https://www.nasa.gov/about/) is to:
+
+- Research Earth and beyond
+- Develop and fund space tech
+- Conduct space exploration
+- Share discoveries with world
+
+Each of these can be broken down into goals, but they are not goals in themselves.
+
+## 2. Actors
+
+After goals, the second level is actors. Identify actors by asking, "Who can help or hinder achieving the goal?" They can be individuals, groups, or even systems. Returning to the goal of going to the moon:
+
+- **Individuals:** NASA astronauts, analysts, and engineers are primarily involved. The U.S. President set the goal and is a primary stakeholder. Foreign spies may steal information, putting the goal at risk.
+- **Groups:** Congress funds NASA. Companies source material and make necessary products for the mission. The American public supports the mission. The Soviet Union is the competition.
+- **Systems:** Road and rail infrastructure is need to transport supplies. Utilities provide essentials for factories. Reliable communication and life support is needed to make the space missions viable. Weather needs to be suitable for rocket launches.
+
+In any given problem space, there can be an abundance of actors. Some may be more obvious than others. Take time to brainstorm. Ultimately, someone must surmise which actors can provide the biggest impact toward achieving the goal. Select the top ones and order them by that expected impact. Consider the motivations of the actors, toward or against the goal. Revisit and refine this list as more is learned and as progress is made.
+
+From here on, let's focus on three actors, from each of the actor types: an astronaut, Congress, and the life support system. Impact maps will be shown as an outline, with each level increased in indentation. Each item is prefixed with its type. More levels will be added to this impact map in subsequent sections.
+
+<ImpactMapFigure>
+- **Goal:** Go to the moon (Apollo missions)
+	- **Actor:** Astronaut
+	- **Actor:** Congress
+	- **Actor:** Life support system
+</ImpactMapFigure>
+
+## 3. Impacts
+
+The third level is impacts. Impacts are the change of behavior which should result in progress toward achieving the goal. Identify impacts by asking, "What should the actors do or not do to impact the goal?" For example:
+
+- Astronauts need to study, so they know as much about the equipment they're using as the engineers that built them. They need to train and practice so they're in shape and are ready for any situation.
+- Congress needs to fund NASA, and they should use their influence to rally for public support of the program.
+- The life support system needs to monitor and manage the environments in which that astronauts will live and work. Practically, pressure, temperature, and humidity needs to be maintained. Oxygen needs to be produced from wastewater, and cleared of carbon dioxide and volatile gases. Air needs to be ventilated. Water needs to be recycled and stored.
+
+<ImpactMapFigure>
+- **Goal:** Go to the moon (Apollo missions)
+	- **Actor:** Astronaut
+		- **Impact:** Study
+		- **Impact:** Train and practice
+	- **Actor:** Congress
+		- **Impact:** Fund NASA
+		- **Impact:** Rally public support
+	- **Actor:** Life support system
+		- **Impact:** Maintain pressure and temperature
+		- **Impact:** Filter and purify air
+		- **Impact:** Recycle and store water
+</ImpactMapFigure>
+
+## 4. Deliverables
+
+Now, let's transition from the problem space to the solution space. The fourth level of impact maps is deliverables. Identify deliverables by asking, "How will you help the actors make the intended impact?" These are the solutions the team can provide.
+
+Astronauts will need to step out of their crafts and enter space or the lunar surface. So, they'll need [space suits](https://en.wikipedia.org/wiki/Primary_life_support_system). In order for them to maximize mobility, each suit needs its own portable life support system (PLSS). This is the "backpack" that the astronauts wear. Throughout the Apollo Program, there were [eight configurations](https://www.hq.nasa.gov/alsj/ALSJ-FlightPLSS.pdf) of the PLSS. There was a lot to learn and test along that journey.
+
+With this next iteration of the impact map, the three impacts under life support is condensed down to a single impact: "maintain environment and atmosphere." This was done to simplify the map, since the deliverable of the PLSS just happens to address those three impacts.
+
+<ImpactMapFigure>
+- **Goal:** Go to the moon (Apollo missions)
+	- **Actor:** Life support system
+		- **Impact:** Maintain environment and atmosphere
+			- **Deliverable:** Portable life support system (PLSS)
+</ImpactMapFigure>
+
+## 5. Experiments
+
+The fifth and final level of impact maps is experiments. Identify experiments by asking, "How can you test whether the deliverable will have the intended impact?" This will require research and evidence. What is learned from these experiments may result in the solution needing to be refined or new solutions to be explored.
+
+There were two notable tests of the portable life support system. The first was on Earth, in the neutral buoyancy tanks, in Dallas, Texas. The second was in orbit, during the Apollo 9 mission. Together, this proved the space suits would ready for a lunar landing, during the Apollo 11 mission.
+
+Once the two experiments are included in the impact map, it is clear to see how the individual experiments (at the bottom of the map) feeds into the larger goal (at the top of the map). To go to moon, the life support system needs to maintain environment and atmosphere. It needs to do this within a space suit, so the crew can explore the lunar surface. The portable life support system will be tested both on Earth and in Earth orbit, to make sure it is ready for the lunar mission.
+
+This impact map can grow to be as complex and detailed as the problem warrants. Going to the moon is a big and complex problem. As such, it is necessary to grasp how the little details involving thousands of hours and millions of dollars will result in the bigger achievement.
+
+<ImpactMapFigure>
+- **Goal:** Go to the moon (Apollo missions)
+	- **Actor:** Life support system
+		- **Impact:** Maintain environment and atmosphere
+			- **Deliverable:** Portable life support system (PLSS)
+				- **Experiment:** Neutral buoyancy tanks
+				- **Experiment:** Orbit
+</ImpactMapFigure>
+
+## Collaborating
+
+Impact maps in an outline form are easy to produce in a word processor, like Microsoft Word or Google Docs. Using those programs, they can also be shared, so the team can collaborate together on the impact map.
+
+Labeling the level for each item in the impact map could become tedious. Explore shorthands to accommodate comfort of the team:
+
+- The "Goal" label may not be needed, since it could be implied, given its position at the start of the map.
+- The other labels could be abbreviated: "A" for actor, "I" for impact, "D" for deliverable, and "E" for experiment.
+- Labels could include numbers (e.g., A3, I5, D1, E1) to ease the reference of a specific item.
+
+<ImpactMapFigure>
+- **Go to the moon (Apollo missions)**
+	- **A1.** Astronaut
+		- **I1.** Study
+		- **I2.** Train and practice
+	- **A2.** Congress
+		- **I3.** Fund NASA
+		- **I4.** Rally public support
+	- **A3.** Life support system
+		- **I5.** Maintain environment and atmosphere
+			- **D1.** Portable life support system (PLSS)
+				- **E1.** Neutral buoyancy tanks
+				- **E2.** Orbit
+</ImpactMapFigure>
+
+Merging the actors with impacts could allow more nuance for prioritizing. Maybe the "I" (impact) abbreviation is not needed in this view.
+
+<ImpactMapFigure>
+- **Go to the moon (Apollo missions)**
+	- **1.** **Congress:** Fund NASA
+	- **2.** **Astronaut:** Train and practice
+	- **3.** **Life support system:** Maintain environment and atmosphere
+	- **4.** **Astronaut:** Study
+	- **5.** **Congress:** Rally public support
+</ImpactMapFigure>
+
+## Conclusion
+
+Impact maps are a powerful and flexible collaborative tool for exploring how solutions can make an impact toward its goal. They can be enlightening during discovery phase of a project. They can prioritize work during the delivery phase of a project.
+
+Part 2 of this series will explore how impact maps can reveal assumptions about solutions.
+
+Part 3 of this series will expand on impact maps with more samples.

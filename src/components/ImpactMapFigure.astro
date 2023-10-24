@@ -1,0 +1,47 @@
+---
+const { label } = Astro.props;
+---
+
+<figure class="im">
+	<slot />
+</figure>
+
+<style is:global>
+	.im {
+		border: var(--2px) solid var(--color-link);
+		border-radius: var(--4px);
+		padding: var(--8px) var(--16px) var(--16px);
+	}
+
+	.im > ul {
+		padding-left: 0;
+	}
+
+	.im ul {
+		margin-top: 0;
+	}
+
+	.im li {
+		list-style-type: none;
+	}
+
+	.im li strong:first-child {
+		color: oklch(90% 0.25 100);
+	}
+
+	.im li li strong:first-child {
+		color: oklch(90% 0.25 150);
+	}
+
+	.im li li li strong:first-child {
+		color: oklch(90% 0.25 200);
+	}
+
+	.im li li li li strong:first-child {
+		color: oklch(90% 0.25 300);
+	}
+
+	.im li li li li li strong:first-child {
+		color: oklch(90% 0.25 30);
+	}
+</style>
