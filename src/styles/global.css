@@ -1,4 +1,10 @@
 :root {
+	/* https://oklch.com/#75,0.1,20,100 */
+	--color-20-75: #e69494;
+	/* https://oklch.com/#75,0.1,80,100 */
+	--color-80-75: #cfa761;
+	/* https://oklch.com/#75,0.1,150,100 */
+	--color-150-75: #7fc08c;
 	/* https://oklch.com/#15,0.2,255,100 */
 	--color-255-15: #000b1f;
 	/* https://oklch.com/#75,0.2,255,100 */
@@ -9,8 +15,6 @@
 	--color-255-95: #e4f0ff;
 	/* https://oklch.com/#75,0.2,285,100 */
 	--color-285-75: #a6a1ff;
-	/* https://oklch.com/#75,0.1,150,100 */
-	--color-150-75: #7fc08c;
 
 	--color-base: var(--color-255-15);
 	--color-code: var(--color-150-75);
