@@ -119,6 +119,7 @@ figcaption {
 h1 {
 	font-size: var(--fs-4);
 	margin: 0;
+	text-wrap: balance;
 }
 
 h2 {
