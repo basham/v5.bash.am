@@ -19,6 +19,7 @@
 	--color-base: var(--color-255-15);
 	--color-code: var(--color-150-75);
 	--color-link: var(--color-255-75);
+	--color-mark: var(--color-80-75);
 	--color-muted: var(--color-255-75-5);
 	--color-text: var(--color-255-95);
 	--color-visited: var(--color-285-75);
@@ -154,6 +155,19 @@ main::after {
 	width: var(--size);
 }
 
+mark {
+	background-color: var(--color-mark);
+	color: var(--color-base);
+}
+
+mark::before {
+	content: " [highlight start] ";
+}
+
+mark::after {
+	content: " [highlight end] ";
+}
+
 ol,
 ul {
 	margin: 1em 0 0;
@@ -192,6 +206,8 @@ table {
 	margin: 0;
 }
 
+mark::before,
+mark::after,
 .sr-only:not(:focus):not(:active) {
 	clip: rect(0 0 0 0);
 	clip-path: inset(50%);

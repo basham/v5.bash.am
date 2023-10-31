@@ -1,14 +1,33 @@
-<figure class="im">
-	<slot />
+---
+const { label } = Astro.props;
+---
+
+<figure>
+	{label && <figcaption>{label}</figcaption>}
+	<div class="im">
+		<slot />
+	</div>
 </figure>
 
-<style is:global>
-	.im {
+<style>
+	figure {
 		border: var(--2px) solid var(--color-link);
 		border-radius: var(--4px);
-		padding: var(--8px) var(--16px) var(--16px);
 	}
 
+	figcaption {
+		background-color: var(--color-link);
+		border-bottom: var(--2px) solid var(--color-link);
+		color: var(--color-base);
+		padding: 0.5em 1em;
+	}
+
+	div {
+		padding: var(--8px) var(--16px) var(--16px);
+	}
+</style>
+
+<style is:global>
 	.im > ul {
 		padding-left: 0;
 	}

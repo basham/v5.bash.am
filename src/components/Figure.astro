@@ -1,0 +1,28 @@
+---
+const { label } = Astro.props;
+---
+
+<figure>
+	{label && <figcaption>{label}</figcaption>}
+	<div>
+		<slot />
+	</div>
+</figure>
+
+<style>
+	figure {
+		border: var(--2px) solid var(--color-link);
+		border-radius: var(--4px);
+	}
+
+	figcaption {
+		background-color: var(--color-link);
+		border-bottom: var(--2px) solid var(--color-link);
+		color: var(--color-base);
+		padding: 0.5em 1em;
+	}
+
+	div {
+		margin: var(--16px);
+	}
+</style>
