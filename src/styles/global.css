@@ -100,7 +100,6 @@ code,
 pre {
 	color: var(--color-code);
 	font-family: var(--font-mono);
-	margin: 0;
 	tab-size: 2;
 }
 
@@ -109,7 +108,11 @@ main {
 	margin-top: 2em;
 }
 
-figure {
+figure,
+ol,
+p,
+pre,
+ul {
 	margin: 1em 0 0;
 }
 
@@ -132,6 +135,11 @@ h3 {
 	font-size: var(--fs-2);
 	font-weight: bold;
 	margin: 1.5em 0 0;
+}
+
+hr {
+	border: var(--1px) solid var(--color-link);
+	margin: var(--32px) 0;
 }
 
 img {
@@ -170,21 +178,12 @@ mark::after {
 
 ol,
 ul {
-	margin: 1em 0 0;
 	padding: 0 0 0 1.5em;
 }
 
 ol ol,
 ul ul {
 	margin-top: 0;
-}
-
-p {
-	margin: 1em 0 0;
-}
-
-pre {
-	padding: 1em;
 }
 
 pre > code {
