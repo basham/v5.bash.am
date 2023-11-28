@@ -1,5 +1,5 @@
 ---
-title: Imagine a web without JavaScript
+title: Imagine the web without JavaScript
 pubDate: 2023-11-21
 description: ""
 draft: true
@@ -7,7 +7,7 @@ draft: true
 
 import CodeFigure from "@components/CodeFigure.astro";
 
-The software teams I work with at Indiana University have primarily developed single-page applications (SPA) over the last 10 years. That is a long period of time to practice that pattern and learn from it. Two years ago, I published the article [*Warning signs of front-end complexity*](/2022-08-30/complexity) as a way to reflect on the problems encountered with this approach and to provide a way forward. Since then, I directed two software teams on migrating their single-page architecture to a multi-page architecture.
+The software teams I have worked with over the last 10 years have primarily developed single-page applications (SPA). That is a long period of time to practice that pattern and learn from it. Two years ago, I published the article [*Warning signs of front-end complexity*](/2022-08-30/complexity) as a way to reflect on the problems encountered with this approach and to provide a way forward. Since then, I directed two software teams on migrating their single-page architecture to a multi-page architecture.
 
 During these projects, developers frequently ask me:
 
@@ -19,63 +19,112 @@ My most effective response is simply:
 
 A JavaScript-less web relies on links and form submissions to handle all interactions with the server, resulting in a page refresh or redirect.
 
-Keys and values are shared to the server through the URL's query string.
+## Query string
+
+Keys and values are shared to the server through the URL's query string, most often used in a link's `href` attribute.
 
 <CodeFigure>
 ```html
 <a href="/search?page=1&sort=desc">Page 1</a>
 <a href="/search?page=2&sort=desc">Page 2</a>
+```
+</CodeFigure>
 
-<form method="get" action="/search?sort=desc">
+## User input
+
+User input is shared with the server through form field `name` and `value` attributes.
+
+<CodeFigure>
+```html
+<input type="text" name="query" value="">
+
+<select name="sort">
+	<option value="asc">A to Z</option>
+	<option value="desc">Z to A</option>
+</select>
+```
+</CodeFigure>
+
+## View resources
+
+Use a form's `get` method to view resources based on user input, such as displaying a list of items sorted in a user-specified way.
+
+<CodeFigure>
+```html
+<form method="get" action="/results">
+	<label for="sort-field">Sort</label>
+	<select id="sort-field" name="sort">
+		<option value="asc">A to Z</option>
+		<option value="desc">Z to A</option>
+	</select>
+	<button type="submit">Sort</button>
 </form>
 ```
 </CodeFigure>
 
-Keys and values can also be shared to the server through form field `name` and `value` attributes.
+## Create, update, and delete resources
+
+Use a form's `post` method to create, update, or delete resources.
+
+Hidden input fields can indicate the particular action to take on the given resource.
 
 <CodeFigure>
 ```html
-<form method="post">
-	<input type="text" name="query">
-</form>
-```
-</CodeFigure>
-
-## Create
-
-Use a form to create a resource.
-
-<CodeFigure>
-```html
-<form method="post" action="/tasks/add">
-	<input type="text" name="label" value="">
-	<button type="submit">Save</button>
-</form>
-```
-</CodeFigure>
-
-## Update
-
-Use a form to update a resource.
-
-<CodeFigure>
-```html
-<form method="post" action="/tasks/123">
-	<input type="text" name="label" value="Get groceries">
-	<button type="submit">Save</button>
-</form>
-```
-</CodeFigure>
-
-## Delete
-
-Use a form to delete a resource.
-
-<CodeFigure>
-```html
+<!-- Create -->
 <form method="post" action="/tasks">
+	<input type="hidden" name="action" value="create">
+	<label>
+		<span>Task</span>
+		<input type="text" name="label" value="">
+	</label>
+	<button type="submit">Add</button>
+</form>
+
+<!-- Update -->
+<form method="post" action="/tasks">
+	<input type="hidden" name="action" value="update">
 	<input type="hidden" name="id" value="123">
-	<button type="submit">Delete task</button>
+	<label>
+		<span>Task</span>
+		<input type="text" name="label" value="Get groceries">
+	</label>
+	<button type="submit">Save</button>
+</form>
+
+<!-- Delete -->
+<form method="post" action="/tasks">
+	<input type="hidden" name="action" value="delete">
+	<input type="hidden" name="id" value="123">
+	<button type="submit">Delete</button>
+</form>
+```
+</CodeFigure>
+
+Alternatively, the hidden input fields could be replaced by a URL convention that includes the action and resource identifier in the form's `action` URL.
+
+<CodeFigure>
+```html
+<!-- Create -->
+<form method="post" action="/tasks/new">
+	<label>
+		<span>Task</span>
+		<input type="text" name="label" value="">
+	</label>
+	<button type="submit">Add</button>
+</form>
+
+<!-- Update -->
+<form method="post" action="/tasks/123/edit">
+	<label>
+		<span>Task</span>
+		<input type="text" name="label" value="Get groceries">
+	</label>
+	<button type="submit">Save</button>
+</form>
+
+<!-- Delete -->
+<form method="post" action="/tasks/123/delete">
+	<button type="submit">Delete</button>
 </form>
 ```
 </CodeFigure>
@@ -84,8 +133,6 @@ Use a form to delete a resource.
 
 - Links get complicated when they are used to do things meant for forms.
 - Forms get complicated when they are used to do things meant for links.
-- GET/POST/DELETE?
-- View/Update/Delete?
 - Pagination: List of links is more sensible than a bunch of forms.
 - Without JavaScript, user input can only be captured with form fields. You can't dynamically update a link's URL to make it work in the same way.
 - Progressive enhancement

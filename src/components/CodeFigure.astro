@@ -4,9 +4,7 @@ const { label } = Astro.props;
 
 <figure>
 	{label && <figcaption>{label}</figcaption>}
-	<div>
-		<slot />
-	</div>
+	<slot />
 </figure>
 
 <style>
@@ -22,7 +20,7 @@ const { label } = Astro.props;
 		padding: 0.5em 1em;
 	}
 
-	div {
+	:global(figure pre.astro-code) {
 		padding: 0 1em 1em;
 	}
 </style>
