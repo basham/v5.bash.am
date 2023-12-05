@@ -111,7 +111,7 @@ main {
 figure,
 ol,
 p,
-pre,
+table,
 ul {
 	margin: 1em 0 0;
 }
@@ -191,7 +191,14 @@ pre > code {
 }
 
 table {
+	border-spacing: 0;
 	width: 100%;
+}
+
+td,
+th {
+	border-bottom: var(--1px) solid var(--color-muted);
+	padding: var(--8px);
 }
 
 .list-inline {

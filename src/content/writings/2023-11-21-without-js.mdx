@@ -1,5 +1,5 @@
 ---
-title: Imagine the web without JavaScript
+title: If you could not use JavaScript
 pubDate: 2023-11-21
 description: ""
 draft: true
@@ -7,9 +7,9 @@ draft: true
 
 import CodeFigure from "@components/CodeFigure.astro";
 
-The software teams I have worked with over the last 10 years have primarily developed single-page applications (SPA). That is a long period of time to practice that pattern and learn from it. Two years ago, I published the article [*Warning signs of front-end complexity*](/2022-08-30/complexity) as a way to reflect on the problems encountered with this approach and to provide a way forward. Since then, I directed two software teams on migrating their single-page architecture to a multi-page architecture.
+The software teams I have worked with over the last 10 years have primarily developed single-page applications (SPA). That is a long time to practice and learn from that pattern. Two years ago, I published the article [*Warning signs of front-end complexity*](/2022-08-30/complexity) as a way to reflect on the problems encountered with this approach and to provide a way forward. Since then, I directed two software teams on migrating their single-page architecture to a multi-page architecture.
 
-During these projects, developers frequently ask me:
+During these projects, developers frequently ask me about the user interface:
 
 > Should this be a link or a button?
 
@@ -17,41 +17,114 @@ My most effective response is simply:
 
 > How would you build this if you could not use JavaScript?
 
-A JavaScript-less web relies on links and form submissions to handle all interactions with the server, resulting in a page refresh or redirect.
+A JavaScript-less web relies on links and form submissions to handle all interactions with the server, resulting in a page refresh or redirect. Let's review some examples:
 
-## Query string
+- [Links](#links)
+- [In-page links](#in-page-links)
+- [Submit buttons](#submit-buttons)
+- [Non-submit buttons](#non-submit-buttons)
 
-Keys and values are shared to the server through the URL's query string, most often used in a link's `href` attribute.
+## Links
 
-<CodeFigure>
+Use links when user input is not needed, such as for a website's navigation.
+
+<CodeFigure label="Primary navigation">
 ```html
-<a href="/search?page=1&sort=desc">Page 1</a>
-<a href="/search?page=2&sort=desc">Page 2</a>
+<nav aria-label="Primary">
+	<a href="/">Home</a>
+	<a href="/search">Search</a>
+	<a href="/about">About</a>
+</nav>
 ```
 </CodeFigure>
 
-## User input
+If a page links to itself, it may include extra data in its query string to support dynamic server-side rendering. For example, `page` and `sort` keys could provide basic pagination functionality.
 
-User input is shared with the server through form field `name` and `value` attributes.
-
-<CodeFigure>
+<CodeFigure label="Pagination on Page 2 of the search page">
 ```html
-<input type="text" name="query" value="">
-
-<select name="sort">
-	<option value="asc">A to Z</option>
-	<option value="desc">Z to A</option>
-</select>
+<nav aria-label="Pagination">
+	<a href="/search?page=1&sort=asc">
+		Page 1
+	</a>
+	<a href="/search?page=2&sort=asc" aria-current="page">
+		Page 2
+	</a>
+	<a href="/search?page=3&sort=asc">
+		Page 3
+	</a>
+</nav>
 ```
 </CodeFigure>
 
-## View resources
+Links can also be used to apply settings for a page. Like pagination, changing the sort order uses the `page` and `sort` keys.
 
-Use a form's `get` method to view resources based on user input, such as displaying a list of items sorted in a user-specified way.
-
-<CodeFigure>
+<CodeFigure label="Change sort order on the search page">
 ```html
-<form method="get" action="/results">
+<nav aria-label="Sort">
+	<a href="/search?page=1&sort=asc" aria-current="true">
+		Sort A to Z
+	</a>
+	<a href="/search?page=1&sort=desc">
+		Sort Z to A
+	</a>
+</nav>
+```
+</CodeFigure>
+
+The server inspects the current `sort` value in the URL and dynamically applies it to all the pagination links.
+
+<CodeFigure label="Pagination after changing the sort order from ascending to descending">
+```html
+<nav aria-label="Pagination">
+	<a href="/search?page=1&sort=desc" aria-current="page">
+		Page 1
+	</a>
+	<a href="/search?page=2&sort=desc">
+		Page 2
+	</a>
+	<a href="/search?page=3&sort=desc">
+		Page 3
+	</a>
+</nav>
+```
+</CodeFigure>
+
+## In-page links
+
+Use in-page links with `#` to navigate to specific content on the same page.
+
+<CodeFigure label="Table of contents navigation">
+```html
+<nav aria-label="Contents">
+	<a href="#">…</a>
+	<a href="#">…</a>
+	<a href="#">…</a>
+</nav>
+
+<h2 id="#">…</h2>
+<!-- Content -->
+
+<h2 id="#">…</h2>
+<!-- Content -->
+
+<h2 id="#">…</h2>
+<!-- Content -->
+```
+</CodeFigure>
+
+[Skip to…]
+[Back to top]
+[Anchor links]
+
+## Submit buttons
+
+Use submit buttons with forms when user input is needed. The `name` and `value` attributes on form fields are sent to the server on submit.
+
+Use a form's `get` method to change the view of a page based on user input, such as displaying a list of items sorted in a user-specified way. In this particular case, the result is effectively identical to the previously described link-based solution.
+
+<CodeFigure label="Form for changing the sort order">
+```html
+<form method="get" action="/search">
 	<label for="sort-field">Sort</label>
 	<select id="sort-field" name="sort">
 		<option value="asc">A to Z</option>
@@ -62,39 +135,36 @@ Use a form's `get` method to view resources based on user input, such as display
 ```
 </CodeFigure>
 
-## Create, update, and delete resources
+Use a form's `post` method to create, update, or delete resources. Hidden input fields can indicate the particular action to take on the given resource.
 
-Use a form's `post` method to create, update, or delete resources.
-
-Hidden input fields can indicate the particular action to take on the given resource.
-
-<CodeFigure>
+<CodeFigure label="Forms for creating, updating, and deleting a resource">
 ```html
 <!-- Create -->
-<form method="post" action="/tasks">
-	<input type="hidden" name="action" value="create">
-	<label>
-		<span>Task</span>
-		<input type="text" name="label" value="">
-	</label>
+<form action="/tasks" method="post">
+	<input name="action" type="hidden" value="create">
+	<label for="field-1">Task</label>
+	<input id="field-1" name="label" type="text">
 	<button type="submit">Add</button>
 </form>
 
 <!-- Update -->
-<form method="post" action="/tasks">
-	<input type="hidden" name="action" value="update">
-	<input type="hidden" name="id" value="123">
-	<label>
-		<span>Task</span>
-		<input type="text" name="label" value="Get groceries">
-	</label>
+<form action="/tasks" method="post">
+	<input name="action" type="hidden" value="update">
+	<input name="id" type="hidden" value="123">
+	<label for="field-2">Task</label>
+	<input
+		id="field-2"
+		name="label"
+		type="text"
+		value="Get groceries"
+	>
 	<button type="submit">Save</button>
 </form>
 
 <!-- Delete -->
-<form method="post" action="/tasks">
-	<input type="hidden" name="action" value="delete">
-	<input type="hidden" name="id" value="123">
+<form action="/tasks" method="post">
+	<input name="action" type="hidden" value="delete">
+	<input name="id" type="hidden" value="123">
 	<button type="submit">Delete</button>
 </form>
 ```
@@ -102,23 +172,24 @@ Hidden input fields can indicate the particular action to take on the given reso
 
 Alternatively, the hidden input fields could be replaced by a URL convention that includes the action and resource identifier in the form's `action` URL.
 
-<CodeFigure>
+<CodeFigure label="Forms for creating, updating, and deleting a resource without hidden inputs">
 ```html
 <!-- Create -->
 <form method="post" action="/tasks/new">
-	<label>
-		<span>Task</span>
-		<input type="text" name="label" value="">
-	</label>
+	<label id="field-1">Task</label>
+	<input id="field-1" name="label" type="text">
 	<button type="submit">Add</button>
 </form>
 
 <!-- Update -->
 <form method="post" action="/tasks/123/edit">
-	<label>
-		<span>Task</span>
-		<input type="text" name="label" value="Get groceries">
-	</label>
+	<label for="field-2">Task</label>
+	<input
+		id="field-2"
+		name="label"
+		type="text"
+		value="Get groceries"
+	>
 	<button type="submit">Save</button>
 </form>
 
@@ -129,12 +200,48 @@ Alternatively, the hidden input fields could be replaced by a URL convention tha
 ```
 </CodeFigure>
 
+## Non-submit buttons
+
+Buttons do not submit a form when they are:
+
+- outside a form
+- within a form with the `type="button"` attribute
+
+<CodeFigure label="Buttons without submit behavior">
+```html
+<button>Clear</button>
+
+<form>
+	<button type="button">Cancel</button>
+</form>
+```
+</CodeFigure>
+
+The only way to make these types of buttons functional is to use JavaScript. These are mostly used as a way to enhance the user experience.
+
+## Conclusion
+
+How you use links or buttons primarily depends on the need for user input and the intended default browser behavior.
+
+| User input | Default behavior | Use |
+| :-- | :-- | :-- |
+| None | Redirect or refresh | `<a href="/…">` |
+| None | Skip | `<a href="#…">` |
+| Optional | Redirect or refresh | `<button type="submit">` |
+| Optional | None (use JavaScript) | `<button type="button">` |
+
+It is safer and more maintainable to align with default browser behavior. Only override defaults if it will enhance the user experience. For example, a form can be prevented from submitting in order to provide custom client-side validation.
+
+Use JavaScript to define behavior for non-submit buttons, as they have no browser default. Use this for non-critical functionality, such as ….
+
+Do not override behavior just for the sake of making one element behave like another, such as making a `div` be a `button` or a `button` a link.
+
 ---
 
 - Links get complicated when they are used to do things meant for forms.
 - Forms get complicated when they are used to do things meant for links.
 - Pagination: List of links is more sensible than a bunch of forms.
-- Without JavaScript, user input can only be captured with form fields. You can't dynamically update a link's URL to make it work in the same way.
 - Progressive enhancement
 - JavaScript can make anything in HTML be effectly anything else in HTML. A button could be created from a link. A link could be created from a button. Either could be created from a `div`. However, just because we can doesn't mean we should.
 - We should return to the basics, the fundamentals of the web.
+- Use JS to override HTML default behavior, if wanting a different behavior. `event.preventDefault()`.
