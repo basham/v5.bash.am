@@ -1,7 +1,7 @@
 ---
 title: If you could not use JavaScript
 pubDate: 2023-11-21
-description: ""
+description: "How you use links or buttons primarily depends on the need for user input and the intended default browser behavior."
 draft: true
 ---
 
@@ -91,30 +91,49 @@ The server inspects the current `sort` value in the URL and dynamically applies 
 
 ## In-page links
 
-Use in-page links with `#` to navigate to specific content on the same page.
+Use in-page links with `#` in the `href` value to navigate to specific content on the same page. This is commonly used for:
 
-<CodeFigure label="Table of contents navigation">
+- table of contents for pages with many distinct sections
+- skip links at the top of the page for keyboard users
+- back-to-top link (`#` or `#top`) at the bottom of a long page
+
+<CodeFigure label="Table of contents">
 ```html
 <nav aria-label="Contents">
-	<a href="#">…</a>
-	<a href="#">…</a>
-	<a href="#">…</a>
+	<a href="#section-1">…</a>
+	<a href="#section-2">…</a>
+	<a href="#section-3">…</a>
 </nav>
 
-<h2 id="#">…</h2>
+<h2 id="#section-1">…</h2>
 <!-- Content -->
 
-<h2 id="#">…</h2>
+<h2 id="#section-2">…</h2>
 <!-- Content -->
 
-<h2 id="#">…</h2>
+<h2 id="#section-3">…</h2>
 <!-- Content -->
 ```
 </CodeFigure>
 
-[Skip to…]
-[Back to top]
-[Anchor links]
+<CodeFigure label="Skip and back-to-top links">
+```html
+<nav aria-label="Skip">
+	<a href="#main">Skip to main content</a>
+	<a href="#results">Skip to results</a>
+</nav>
+
+<main id="main">
+	<!-- Content -->
+
+	<section id="results">
+		<!-- Content -->
+	</section>
+
+	<a href="#">Back to top</a>
+</main>
+```
+</CodeFigure>
 
 ## Submit buttons
 
@@ -137,32 +156,32 @@ Use a form's `get` method to change the view of a page based on user input, such
 
 Use a form's `post` method to create, update, or delete resources. Hidden input fields can indicate the particular action to take on the given resource.
 
-<CodeFigure label="Forms for creating, updating, and deleting a resource">
+<CodeFigure label={`Forms for creating, updating, and deleting an "Item" resource`}>
 ```html
 <!-- Create -->
-<form action="/tasks" method="post">
+<form action="/items" method="post">
 	<input name="action" type="hidden" value="create">
-	<label for="field-1">Task</label>
+	<label for="field-1">Item</label>
 	<input id="field-1" name="label" type="text">
 	<button type="submit">Add</button>
 </form>
 
 <!-- Update -->
-<form action="/tasks" method="post">
+<form action="/items" method="post">
 	<input name="action" type="hidden" value="update">
 	<input name="id" type="hidden" value="123">
-	<label for="field-2">Task</label>
+	<label for="field-2">Item</label>
 	<input
 		id="field-2"
 		name="label"
 		type="text"
-		value="Get groceries"
+		value="…"
 	>
 	<button type="submit">Save</button>
 </form>
 
 <!-- Delete -->
-<form action="/tasks" method="post">
+<form action="/items" method="post">
 	<input name="action" type="hidden" value="delete">
 	<input name="id" type="hidden" value="123">
 	<button type="submit">Delete</button>
@@ -175,15 +194,15 @@ Alternatively, the hidden input fields could be replaced by a URL convention tha
 <CodeFigure label="Forms for creating, updating, and deleting a resource without hidden inputs">
 ```html
 <!-- Create -->
-<form method="post" action="/tasks/new">
-	<label id="field-1">Task</label>
+<form method="post" action="/items/new">
+	<label id="field-1">Item</label>
 	<input id="field-1" name="label" type="text">
 	<button type="submit">Add</button>
 </form>
 
 <!-- Update -->
-<form method="post" action="/tasks/123/edit">
-	<label for="field-2">Task</label>
+<form method="post" action="/items/123/edit">
+	<label for="field-2">Item</label>
 	<input
 		id="field-2"
 		name="label"
@@ -194,7 +213,7 @@ Alternatively, the hidden input fields could be replaced by a URL convention tha
 </form>
 
 <!-- Delete -->
-<form method="post" action="/tasks/123/delete">
+<form method="post" action="/items/123/delete">
 	<button type="submit">Delete</button>
 </form>
 ```
@@ -217,7 +236,7 @@ Buttons do not submit a form when they are:
 ```
 </CodeFigure>
 
-The only way to make these types of buttons functional is to use JavaScript. These are mostly used as a way to enhance the user experience.
+The only way to make these types of buttons functional is to use JavaScript. Prefer to use these for non-critical functionality, that enhances the user experience. For example, a "Clear" button could be a one-click convenience for clearing a text field. If the button fails to work for whatever reason, the user can still manually clear it with the keyboard.
 
 ## Conclusion
 
@@ -225,23 +244,12 @@ How you use links or buttons primarily depends on the need for user input and th
 
 | User input | Default behavior | Use |
 | :-- | :-- | :-- |
-| None | Redirect or refresh | `<a href="/…">` |
+| None | Redirect | `<a href="/…">` |
 | None | Skip | `<a href="#…">` |
-| Optional | Redirect or refresh | `<button type="submit">` |
-| Optional | None (use JavaScript) | `<button type="button">` |
+| Optional | Redirect | `<button type="submit">` |
+| None | None (use JavaScript) | `<button type="button">` |
 
-It is safer and more maintainable to align with default browser behavior. Only override defaults if it will enhance the user experience. For example, a form can be prevented from submitting in order to provide custom client-side validation.
+It is safer and more maintainable to align as much as possible with default browser behavior. Only override defaults with JavaScript if it will enhance the user experience. Some examples:
 
-Use JavaScript to define behavior for non-submit buttons, as they have no browser default. Use this for non-critical functionality, such as ….
-
-Do not override behavior just for the sake of making one element behave like another, such as making a `div` be a `button` or a `button` a link.
-
----
-
-- Links get complicated when they are used to do things meant for forms.
-- Forms get complicated when they are used to do things meant for links.
-- Pagination: List of links is more sensible than a bunch of forms.
-- Progressive enhancement
-- JavaScript can make anything in HTML be effectly anything else in HTML. A button could be created from a link. A link could be created from a button. Either could be created from a `div`. However, just because we can doesn't mean we should.
-- We should return to the basics, the fundamentals of the web.
-- Use JS to override HTML default behavior, if wanting a different behavior. `event.preventDefault()`.
+- Prevent a form from submitting in order to provide custom client-side validation.
+- Use a button instead of making a `div` behave as a button, as this would waste development time and lead to usability and accessibility issues.
