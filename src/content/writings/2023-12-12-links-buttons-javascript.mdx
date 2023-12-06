@@ -1,15 +1,15 @@
 ---
-title: If you could not use JavaScript
-pubDate: 2023-11-21
+title: Links and buttons and JavaScript, oh my!
+pubDate: 2023-12-12
 description: "How you use links or buttons primarily depends on the need for user input and the intended default browser behavior."
 draft: true
 ---
 
 import CodeFigure from "@components/CodeFigure.astro";
 
-The software teams I have worked with over the last 10 years have primarily developed single-page applications (SPA). That is a long time to practice and learn from that pattern. Two years ago, I published the article [*Warning signs of front-end complexity*](/2022-08-30/complexity) as a way to reflect on the problems encountered with this approach and to provide a way forward. Since then, I directed two software teams on migrating their single-page architecture to a multi-page architecture.
+The software teams I have worked with over the last 10 years have primarily developed single-page applications (SPA). Last year, I published the article [*Warning signs of front-end complexity*](/2022-08-30/complexity) as a way to reflect on the problems encountered with this approach and to provide a way forward. Since then, I directed two software teams on migrating their single-page architecture to a multi-page architecture.
 
-During these projects, developers frequently ask me about the user interface:
+When relying on client-side routing for so long, it can be easy to forget how else to do it. As such, developers have asked me during these architecture migrations:
 
 > Should this be a link or a button?
 
@@ -17,7 +17,7 @@ My most effective response is simply:
 
 > How would you build this if you could not use JavaScript?
 
-A JavaScript-less web relies on links and form submissions to handle all interactions with the server, resulting in a page refresh or redirect. Let's review some examples:
+A JavaScript-less web relies on links and form submissions to handle all interactions with the server, resulting in a page redirect to the same or a different page. There are also ways to use links and buttons that do not involve the server. Let's review some examples:
 
 - [Links](#links)
 - [In-page links](#in-page-links)
@@ -116,7 +116,7 @@ Use in-page links with `#` in the `href` value to navigate to specific content o
 ```
 </CodeFigure>
 
-<CodeFigure label="Skip and back-to-top links">
+<CodeFigure label="Skip links">
 ```html
 <nav aria-label="Skip">
 	<a href="#main">Skip to main content</a>
@@ -129,6 +129,14 @@ Use in-page links with `#` in the `href` value to navigate to specific content o
 	<section id="results">
 		<!-- Content -->
 	</section>
+</main>
+```
+</CodeFigure>
+
+<CodeFigure label="Back-to-top link">
+```html
+<main>
+	<!-- Content -->
 
 	<a href="#">Back to top</a>
 </main>
@@ -154,66 +162,58 @@ Use a form's `get` method to change the view of a page based on user input, such
 ```
 </CodeFigure>
 
-Use a form's `post` method to create, update, or delete resources. Hidden input fields can indicate the particular action to take on the given resource.
+Use a form's `post` method to create, update, or delete resources. Hidden input fields can indicate the particular action to take on the given resource (Option 1). Alternatively, the hidden input fields could be replaced by a convention that includes the action and resource identifier in the form's `action` URL (Option 2).
 
-<CodeFigure label={`Forms for creating, updating, and deleting an "Item" resource`}>
+<CodeFigure label={`Create an "Item"`}>
 ```html
-<!-- Create -->
+<!-- Option 1 -->
 <form action="/items" method="post">
 	<input name="action" type="hidden" value="create">
-	<label for="field-1">Item</label>
-	<input id="field-1" name="label" type="text">
+	<label for="field">Item</label>
+	<input id="field" name="label" type="text">
 	<button type="submit">Add</button>
 </form>
 
-<!-- Update -->
+<!-- Option 2 -->
+<form action="/items/new" method="post">
+	<label id="field">Item</label>
+	<input id="field" name="label" type="text">
+	<button type="submit">Add</button>
+</form>
+```
+</CodeFigure>
+
+<CodeFigure label={`Update an "Item"`}>
+```html
+<!-- Option 1 -->
 <form action="/items" method="post">
 	<input name="action" type="hidden" value="update">
 	<input name="id" type="hidden" value="123">
-	<label for="field-2">Item</label>
-	<input
-		id="field-2"
-		name="label"
-		type="text"
-		value="…"
-	>
+	<label for="field">Item</label>
+	<input id="field" name="label" type="text" value="…">
 	<button type="submit">Save</button>
 </form>
 
-<!-- Delete -->
+<!-- Option 2 -->
+<form action="/items/123/edit" method="post">
+	<label for="field">Item</label>
+	<input id="field" name="label" type="text" value="…">
+	<button type="submit">Save</button>
+</form>
+```
+</CodeFigure>
+
+<CodeFigure label={`Delete an "Item"`}>
+```html
+<!-- Option 1 -->
 <form action="/items" method="post">
 	<input name="action" type="hidden" value="delete">
 	<input name="id" type="hidden" value="123">
 	<button type="submit">Delete</button>
 </form>
-```
-</CodeFigure>
 
-Alternatively, the hidden input fields could be replaced by a URL convention that includes the action and resource identifier in the form's `action` URL.
-
-<CodeFigure label="Forms for creating, updating, and deleting a resource without hidden inputs">
-```html
-<!-- Create -->
-<form method="post" action="/items/new">
-	<label id="field-1">Item</label>
-	<input id="field-1" name="label" type="text">
-	<button type="submit">Add</button>
-</form>
-
-<!-- Update -->
-<form method="post" action="/items/123/edit">
-	<label for="field-2">Item</label>
-	<input
-		id="field-2"
-		name="label"
-		type="text"
-		value="Get groceries"
-	>
-	<button type="submit">Save</button>
-</form>
-
-<!-- Delete -->
-<form method="post" action="/items/123/delete">
+<!-- Option 2 -->
+<form action="/items/123/delete" method="post">
 	<button type="submit">Delete</button>
 </form>
 ```
@@ -236,11 +236,11 @@ Buttons do not submit a form when they are:
 ```
 </CodeFigure>
 
-The only way to make these types of buttons functional is to use JavaScript. Prefer to use these for non-critical functionality, that enhances the user experience. For example, a "Clear" button could be a one-click convenience for clearing a text field. If the button fails to work for whatever reason, the user can still manually clear it with the keyboard.
+The only way to make these types of buttons functional is to use JavaScript. Prefer to use these for non-critical functionality, that enhances the user experience. For example, a "Clear" button could be a one-click convenience for clearing a text field. If the button fails to work for whatever reason, the user can still manually clear the text field with the keyboard.
 
 ## Conclusion
 
-How you use links or buttons primarily depends on the need for user input and the intended default browser behavior.
+How links or buttons should be used primarily depends on the need for user input and the intended default browser behavior.
 
 | User input | Default behavior | Use |
 | :-- | :-- | :-- |
@@ -249,7 +249,9 @@ How you use links or buttons primarily depends on the need for user input and th
 | Optional | Redirect | `<button type="submit">` |
 | None | None (use JavaScript) | `<button type="button">` |
 
-It is safer and more maintainable to align as much as possible with default browser behavior. Only override defaults with JavaScript if it will enhance the user experience. Some examples:
+Only override defaults with JavaScript if it will enhance the user experience. For example:
 
 - Prevent a form from submitting in order to provide custom client-side validation.
-- Use a button instead of making a `div` behave as a button, as this would waste development time and lead to usability and accessibility issues.
+- Use a button instead of making another element (like a `div`) behave as a button.
+
+Overall, it is more reliable and maintainable to align as much as possible with default browser behavior. Use native HTML elements in the way they were intended. This saves development time and circumvents incidental usability and accessibility issues.
