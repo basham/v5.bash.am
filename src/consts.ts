@@ -1,5 +1,6 @@
-export const SITE_TITLE = 'Chris Basham';
-export const SITE_DESCRIPTION = 'Chris Basham is a user experience designer and front-end developer in southern Indiana.';
+const NAME = 'Chris Basham';
+export const SITE_TITLE = NAME;
+export const SITE_DESCRIPTION = `${NAME} designs and develops for the web in southern Indiana. He believes every word, byte, and pixel can improve how we care for each other and the earth.`;
 
 const firstYearOfExperience = 2011;
 const firstMonthOfExperience = 6;

@@ -103,11 +103,22 @@ pre {
 	tab-size: 2;
 }
 
+dd {
+	margin: 0;
+}
+
+dt {
+	color: var(--color-code);
+	font-weight: bold;
+	margin-top: 0.5em;
+}
+
 footer,
 main {
 	margin-top: 2em;
 }
 
+dl,
 figure,
 ol,
 p,
