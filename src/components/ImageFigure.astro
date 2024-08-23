@@ -10,15 +10,24 @@ const { alt = '', format = 'webp', src, quality = 'high' } = Astro.props;
 			format={format}
 			quality={quality}
 			src={src}
-			width="648"
+			width="720"
 		/>
 	</a>
 	<figcaption><slot /></figcaption>
 </figure>
 
 <style>
+	figure {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--fs-2) 2em;
+	}
+
 	figcaption {
-		border-bottom: var(--2px) solid var(--color-link);
-		padding: var(--fs-1) 0;
+		flex-basis: 10em;
+		flex-grow: 1;
+		margin-bottom: 1rem;
+		max-width: 40em;
+		text-wrap: pretty;
 	}
 </style>

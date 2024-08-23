@@ -1,0 +1,137 @@
+---
+title: Writing should be usable
+pubDate: 2024-08-22
+description: ""
+draft: true
+---
+
+import Aside from '@components/Aside.astro';
+import Figure from '@components/Figure.astro';
+
+<Aside>
+**UX writing series:**
+1. [Writing should be useful](/2024-08-20/useful)
+2. Writing should be usable
+3. [Writing should be kind](/2024-08-22/kind)
+</Aside>
+
+Usable writing in digital systems is: accessible, navigable, clear, and concise.
+
+## Usable writing is accessible
+
+Writing is accessible if readers have the ability to distinguish the content in a text and perceive it as words and concepts. We can use text alternatives, color, text resize, and layout to help users read the text.
+
+### Text alternatives
+
+- [SC 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) (Level A)
+- **Images/graphs:** Alt text
+- **Audio/video:** Captions, descriptions, transcripts
+
+```html
+<img
+	src="tomato.jpg"
+	alt="A cluster of ripe cherry tomatoes growing in a community garden">
+```
+
+First, the WCAG success criteria 1.1.1 is about text alternatives. Images that convey information should have a text description. Audio and video should have captions, descriptions, and transcripts. This provides alternative content for assistive technology like a screen reader or braille display. More information is available to users who may not be able to understand the content. Those who are not hard of hearing can still benefit from captions when in a noisy room or in a situation in which they're trying to be quiet.
+
+### Not only color
+
+- [SC 1.4.1](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color) (Level A)
+- Complement color with visual alternative
+
+> Required fields are displayed in red and marked with an asterisks (*)
+
+Don't just use color as the only way to distinguish content. In this example, this says: "Required fields are displayed in red and marked with an asterisks (*)." If it was just in red, that's not enough information for all users, so provide some visual redundancy, like a symbol.
+
+### Text contrast
+
+- [SC 1.4.3](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum) (Level AA):  
+**4.5:1** minimum contrast ratio
+- [SC 1.4.6](https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced) (Level AAA):  
+**7:1** minimum contrast ratio
+
+There is a minimum text contrast requirement between the text color and its background color. The AAA text contrast requirements are more strict than the AA requirements.
+
+### Text resize
+
+- [SC 1.4.4](https://www.w3.org/WAI/WCAG21/Understanding/resize-text) (Level AA)
+- Resize text up to 200% without loss  
+of content or functionality
+
+You should be able to resize text upwards of 200%, but it should be done in a way that no information is lost. This can happen when images overlap text or text is clipped.
+
+### Avert horizontal scrolling
+
+- [SC 1.4.10](https://www.w3.org/WAI/WCAG21/Understanding/reflow) (Level AA)
+- Don't require horizontal scrolling  
+when viewport is 320px.
+
+Scrolling primarily happens vertically. When the viewport of the device is smaller, try to make the content adaptable enough to avert horizontal scrolling. Scrolling in two directions is tricky, so try to avoid it. This gets challenging with content like tables, but there are techniques than can be explored which help.
+
+### Layout
+
+- [SC 1.4.8](https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation) (Level AAA)
+- **Line length:** 80 characters or less
+- **Line spacing:** 150% or more
+- **Paragraph spacing:** 250% or more
+- **Text alignment:** Not justified
+
+To improve layout, aim for line length that is about 80 characters or less. Be generous with line spacing, setting it to about 150%. Set paragraph spacing greater than line spacing, about 250%. In general, default to left-aligned text for English content and don't use justified text on the web.
+
+### Don't cut off or overlap text
+
+- [SC 1.4.12](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing) (Level AA)
+- Adapt content to user-defined layout settings
+
+Don't cut off or overlap text. Again this can also happen when you are zooming and pinching in. It can also happen when some users have different defaults for their styles in the browser.
+
+### Rivet CSS
+
+- Color
+- Spacing
+- Typography
+- Visibility
+
+The Rivet Design System is used for both applications and websites. There's a number of things that it provides that can address some of these accessibility issues mentioned, such as color, spacing, topography, and content visibility.
+
+### Rivet color
+
+- [Color documentation](https://rivet.uits.iu.edu/utilities/color/)
+- **Text:** `.rvt-color-green`
+- **Background:** `.rvt-bg-green-100`
+- Contrast checker (Levels AA/AAA)
+
+In terms of Rivet color, you can use rvt-color-[the particular color] to put in the the text color. You can also use a background utility class for doing background colors. The documentation includes a contrast checker which you can set to check any two Rivet colors against each other. It will say if the chosen colors pass AAA requirements, AA requirements, or neither of these requirements.
+
+### Rivet spacing
+
+- [Gap](https://rivet.uits.iu.edu/utilities/gap/) and [spacing](https://rivet.uits.iu.edu/utilities/spacing/) documentation
+- **Gap:** `.rvt-gap-col-sm`
+- **Margin:** `.rvt-m-top-md`
+- **Padding:** `.rvt-p-left-lg`
+
+Rivet also has some spacing utilities, to change margin, padding, or the new gap property for CSS grid and flexbox.
+
+### Rivet typography
+
+- [Typography documentation](https://rivet.uits.iu.edu/utilities/typography/)
+- **Font size:** `.rvt-ts-md` (26px)
+- **Line height:** `1.5` by default
+- **Content:** `.rvt-prose`
+
+Concerning typography, there are provided font sizes. For example, for .rvt-ts-md, "ts" stands for "type scale" and "md" stands for "medium" or 26-point font. The body is by default 1.5 line length, which matches the 150% line spacing requirement. The .rvt-prose will automatically style a chunk of content, without needing to explicitly style individual parts.
+
+### Rivet visibility
+
+- [Visibility documentation](https://rivet.uits.iu.edu/utilities/visibility/)
+- **Screen readers only:** `.rvt-sr-only`
+- **Hide for all:** `.rvt-display-none`
+
+The Rivet visibility utilities allows you to control the visibility of content. Some content may be hidden to sighted users but announced by screen readers. Some content may be hidden to all users.
+
+## Usable writing is navigable
+
+## Usable writing is clear
+
+## Usable writing is concise
