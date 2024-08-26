@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 const { alt = '', format = 'webp', src, quality = 'high' } = Astro.props;
 ---
 
-<figure>
+<figure class="u-width-full">
 	<a class="u-flex" href={src.src}>
 		<Image
 			alt={alt}

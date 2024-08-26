@@ -9,7 +9,7 @@ const label = date?.toLocaleDateString('en-us', {
 ---
 
 {date && (
-	<div>
+	<div class="u-width-full">
 		<time datetime={datetime}>{label}</time>
 	</div>
 )}
@@ -17,6 +17,6 @@ const label = date?.toLocaleDateString('en-us', {
 <style>
 	div {
 		font-size: var(--fs-0);
-		margin: 1em 0 2.25em;
+		margin: 1em 0 2em;
 	}
 </style>
