@@ -15,34 +15,52 @@ import Figure from '@components/Figure.astro';
 3. [Writing should be kind](/2024-08-22/kind)
 </Aside>
 
-Usable writing in digital systems is: accessible, navigable, clear, and concise.
+Usable writing in digital systems is:
 
-## Usable writing is accessible
+- [accessible](#accessible)
+- navigable
+- clear
+- concise
+
+## Accessible
 
 Writing is accessible if readers have the ability to distinguish the content in a text and perceive it as words and concepts. We can use text alternatives, color, text resize, and layout to help users read the text.
 
 ### Text alternatives
 
-- [SC 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) (Level A)
-- **Images/graphs:** Alt text
-- **Audio/video:** Captions, descriptions, transcripts
+Images and visualizations that convey information should have a text description. Audio and video should have captions, descriptions, and transcripts.
+
+For example, the alternative text for the image `tomatoes.jpg` could describe the quantity ("cluster"), quality ("ripe"), type ("cherry"), and location ("community garden") of the subject ("tomatoes"). It is rich in meaning, much more than if the alternative text was merely a statement of the subject ("Tomatoes").
 
 ```html
-<img
-	src="tomato.jpg"
-	alt="A cluster of ripe cherry tomatoes growing in a community garden">
+<!-- Rich description -->
+<img src="tomatoes.jpg" alt="A cluster of ripe
+	cherry tomatoes growing in a community garden">
+
+<!-- Poor description -->
+<img src="tomatoes.jpg" alt="Tomatoes">
+
+<!-- Missing description -->
+<img src="tomatoes.jpg">
 ```
 
-First, the WCAG success criteria 1.1.1 is about text alternatives. Images that convey information should have a text description. Audio and video should have captions, descriptions, and transcripts. This provides alternative content for assistive technology like a screen reader or braille display. More information is available to users who may not be able to understand the content. Those who are not hard of hearing can still benefit from captions when in a noisy room or in a situation in which they're trying to be quiet.
+These text alternatives also help those who do not use assistive technology (like a screen reader or braille display). For example, those who are not hard of hearing can still benefit from captions when in a noisy room or in a situation in which they are trying to be quiet.
+
+See: [WCAG Success Criteria 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) (Level A)
 
 ### Not only color
 
-- [SC 1.4.1](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color) (Level A)
-- Complement color with visual alternative
+Don't just use color as the only way to distinguish content.
+
+For example, someone who is colorblind may need more than just red text coloring to understand what fields in a form is required.
+
+> Required fields are displayed in red
+
+Complement color with some visual redundancy like a symbol or unique pattern.
 
 > Required fields are displayed in red and marked with an asterisks (*)
 
-Don't just use color as the only way to distinguish content. In this example, this says: "Required fields are displayed in red and marked with an asterisks (*)." If it was just in red, that's not enough information for all users, so provide some visual redundancy, like a symbol.
+See: [WCAG Success Criteria 1.4.1](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color) (Level A)
 
 ### Text contrast
 
