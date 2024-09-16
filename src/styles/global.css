@@ -7,6 +7,8 @@
 	--color-150-75: #7fc08c;
 	/* https://oklch.com/#15,0.2,255,100 */
 	--color-255-15: #000b1f;
+	/* https://oklch.com/#40,0.05,255,100 */
+	--color-255-40: oklch(40% 0.05 255);
 	/* https://oklch.com/#75,0.2,255,100 */
 	--color-255-75: #73b1ff;
 	/* https://oklch.com/#75,0.05,255,100 */
@@ -17,6 +19,7 @@
 	--color-285-75: #a6a1ff;
 
 	--color-base: var(--color-255-15);
+	--color-border: var(--color-255-40);
 	--color-code: var(--color-150-75);
 	--color-link: var(--color-255-75);
 	--color-mark: var(--color-80-75);
@@ -54,6 +57,8 @@
 
 	--font-main: "Libre Franklin Variable", sans-serif;
 	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+
+	--border: var(--2px) solid var(--color-border);
 }
 
 *, *::before, *::after {
@@ -94,7 +99,7 @@ a:visited {
 }
 
 blockquote {
-	border-left: var(--2px) solid var(--color-link);
+	border-left: var(--border);
 	margin: 0;
 	padding: 0 0 0 1em;
 }
@@ -157,6 +162,12 @@ h1 {
 
 h2 {
 	font-size: var(--fs-3);
+}
+
+h2 {
+	border-top: var(--border);
+	margin-top: 2em;
+	padding-top: 2em;
 }
 
 h3 {
@@ -234,20 +245,21 @@ pre > code {
 }
 
 table {
-	border: var(--2px) solid var(--color-link);
+	border: var(--border);
 	border-radius: var(--4px);
 	border-spacing: 0;
-	padding: var(--8px);
+	padding: var(--2px);
 	width: 100%;
 }
 
 td,
 th {
-	padding: var(--8px);
+	padding: 0.5em 1em;
 }
 
 th {
-	color: var(--color-link);
+	background-color: var(--color-border);
+	font-size: var(--fs-0);
 }
 
 .list-inline {

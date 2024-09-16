@@ -30,7 +30,7 @@ Writing is accessible if readers have the ability to distinguish the content in 
 
 Images and visualizations that convey information should have a text description. Audio and video should have captions, descriptions, and transcripts.
 
-For example, the alternative text for the image `tomatoes.jpg` could describe the quantity ("cluster"), quality ("ripe"), type ("cherry"), and location ("community garden") of the subject ("tomatoes"). It is rich in meaning, much more than if the alternative text was merely a statement of the subject ("Tomatoes").
+For example, the alternative text for the image `tomatoes.jpg` could describe the quantity ("cluster"), quality ("ripe"), type ("cherry"), and location ("community garden") of the subject ("tomatoes"). It more rich in meaning than if the alternative text was merely a statement of the subject ("Tomatoes").
 
 ```html
 <!-- Rich description -->
@@ -44,7 +44,7 @@ For example, the alternative text for the image `tomatoes.jpg` could describe th
 <img src="tomatoes.jpg">
 ```
 
-These text alternatives also help those who do not use assistive technology (like a screen reader or braille display). For example, those who are not hard of hearing can still benefit from captions when in a noisy room or in a situation in which they are trying to be quiet.
+These text alternatives also help those who do not use assistive technology, such as a screen reader or braille display. For example, those who are not hard of hearing can still benefit from captions when in a noisy room or in a situation in which they are trying to be quiet.
 
 See: [WCAG Success Criteria 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) (Level A)
 
@@ -52,11 +52,11 @@ See: [WCAG Success Criteria 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/n
 
 Don't just use color as the only way to distinguish content.
 
-For example, someone who is colorblind may need more than just red text coloring to understand what fields in a form is required.
+For example, someone who is colorblind may need more than just text colored red to understand what fields in a form is required.
 
 > Required fields are displayed in red
 
-Complement color with some visual redundancy like a symbol or unique pattern.
+Complement color with some visual redundancy like a symbol or unique background pattern.
 
 > Required fields are displayed in red and marked with an asterisks (*)
 
@@ -149,6 +149,43 @@ Concerning typography, there are provided font sizes. For example, for .rvt-ts-m
 The Rivet visibility utilities allows you to control the visibility of content. Some content may be hidden to sighted users but announced by screen readers. Some content may be hidden to all users.
 
 ## Usable writing is navigable
+
+When landing on a webpage, you need to get oriented, move around, and navigate to other pages. This can be done with titles, headings, landmarks, and links.
+
+### Page title
+
+Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).
+
+Example: `Employee Center | All IU Campuses | One.IU`
+
+See: [SC 2.4.2](https://www.w3.org/WAI/WCAG21/Understanding/page-titled)
+
+<ul>
+	<li>
+		<p>**Page title:** Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).</p>
+		<p>Example: `Employee Center | All IU Campuses | One.IU`</p>
+		<p>See: [SC 2.4.2](https://www.w3.org/WAI/WCAG21/Understanding/page-titled)</p>
+	</li>
+	<li>
+		<p>**Headings:** Headings should be used, starting with the h1 element ("heading level 1"). The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.</p>
+		<p>See: [SC 2.4.6](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels), [SC 2.4.10](https://www.w3.org/WAI/WCAG21/Understanding/section-headings)</p>
+	</li>
+</ul>
+
+
+- **Page title:** Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).
+- **Headings:** Headings should be used, starting with the h1 element, which stands for "heading level 1". The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.  
+See: [SC 2.4.6](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels), [SC 2.4.10](https://www.w3.org/WAI/WCAG21/Understanding/section-headings)
+
+<dl>
+	<dt>Page title</dt>
+	<dd>Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).</dd>
+	<dd>Example: `Employee Center | All IU Campuses | One.IU`</dd>
+	<dd>See: [SC 2.4.2](https://www.w3.org/WAI/WCAG21/Understanding/page-titled)</dd>
+	<dt>Headings</dt>
+	<dd>Headings should be used, starting with the `h1` element ("heading level 1"). The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.</dd>
+	<dd>See: [SC 2.4.6](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels), [SC 2.4.10](https://www.w3.org/WAI/WCAG21/Understanding/section-headings)</dd>
+</dl>
 
 ## Usable writing is clear
 

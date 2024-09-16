@@ -11,14 +11,13 @@ const { label } = Astro.props;
 
 <style>
 	figure {
-		border: var(--2px) solid var(--color-link);
+		border: var(--border);
 		border-radius: var(--4px);
+		padding: var(--2px);
 	}
 
 	figcaption {
-		background-color: var(--color-link);
-		border-bottom: var(--2px) solid var(--color-link);
-		color: var(--color-base);
+		background-color: var(--color-border);
 		padding: 0.5em 1em;
 	}
 
@@ -38,6 +37,7 @@ const { label } = Astro.props;
 
 	.im li {
 		list-style-type: none;
+		margin-top: 0.5em;
 	}
 
 	.im li strong:first-child {
