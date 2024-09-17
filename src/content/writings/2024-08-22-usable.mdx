@@ -6,24 +6,26 @@ draft: true
 ---
 
 import Aside from '@components/Aside.astro';
+import CodeFigure from '@components/CodeFigure.astro';
 import Figure from '@components/Figure.astro';
 
 <Aside label="UX writing series">
 1. [Writing should be useful](/2024-08-20/useful)
 2. Writing should be usable
 3. [Writing should be kind](/2024-08-22/kind)
+
+Workshop: [Writing for Product Teams](https://github.com/basham/swit-workshop-writing) (2024)
 </Aside>
 
-Usable writing in digital systems is:
+Writing in digital systems is usable when it is [accessible](#usable-writing-is-accessible), [navigable](#usable-writing-is-navigable), [clear](#usable-writing-is-clear), and [concise](#usable-writing-is-concise).
 
-- [accessible](#accessible)
-- navigable
-- clear
-- concise
+You can [try several activities](#activities-for-usable-writing) to help make your writing more usable.
+
+**Note:** This article refers extensively to [Web Content Accessibility Guidelines](https://www.w3.org/WAI/WCAG21/Understanding/intro) Success Criteria (SC) and techniques.
 
 ---
 
-## Accessible
+## Usable writing is accessible
 
 Writing is accessible if readers have the ability to distinguish the content in a text and perceive it as words and concepts. We can use text alternatives, color, text resize, and layout to help users read the text.
 
@@ -31,12 +33,13 @@ Writing is accessible if readers have the ability to distinguish the content in 
 
 Images and visualizations that convey information should have a text description. Audio and video should have captions, descriptions, and transcripts.
 
-For example, the alternative text for the image `tomatoes.jpg` could describe the quantity ("cluster"), quality ("ripe"), type ("cherry"), and location ("community garden") of the subject ("tomatoes"). It more rich in meaning than if the alternative text was merely a statement of the subject ("Tomatoes").
+For example, the alternative text for the image `tomatoes.jpg` could describe the quantity ("cluster"), quality ("ripe"), type ("cherry"), and location ("community garden") of the subject ("tomatoes"). It is more rich in meaning than if the alternative text was merely a statement of the subject ("Tomatoes").
 
+<CodeFigure>
 ```html
 <!-- Rich description -->
 <img src="tomatoes.jpg" alt="A cluster of ripe
-	cherry tomatoes growing in a community garden">
+	cherry tomatoes grows in a community garden">
 
 <!-- Poor description -->
 <img src="tomatoes.jpg" alt="Tomatoes">
@@ -44,12 +47,13 @@ For example, the alternative text for the image `tomatoes.jpg` could describe th
 <!-- Missing description -->
 <img src="tomatoes.jpg">
 ```
+</CodeFigure>
 
 These text alternatives also help those who do not use assistive technology, such as a screen reader or braille display. For example, those who are not hard of hearing can still benefit from captions when in a noisy room or in a situation in which they are trying to be quiet.
 
-See: [WCAG Success Criteria 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content) (Level A)
+See: [SC 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content)
 
-### Not only color
+### Color
 
 Don't just use color as the only way to distinguish content.
 
@@ -61,133 +65,337 @@ Complement color with some visual redundancy like a symbol or unique background 
 
 > Required fields are displayed in red and marked with an asterisks (*)
 
-See: [WCAG Success Criteria 1.4.1](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color) (Level A)
+Text should have sufficient contrast against its background. You can use [browser dev tools](https://developers.google.com/codelabs/devtools-cvd#3) to discover low-contrast text.
 
-### Text contrast
-
-- [SC 1.4.3](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum) (Level AA):  
-**4.5:1** minimum contrast ratio
-- [SC 1.4.6](https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced) (Level AAA):  
-**7:1** minimum contrast ratio
-
-There is a minimum text contrast requirement between the text color and its background color. The AAA text contrast requirements are more strict than the AA requirements.
+See: [SC 1.4.1](https://www.w3.org/WAI/WCAG21/Understanding/use-of-color), [SC 1.4.3](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum), [SC 1.4.6](https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced)
 
 ### Text resize
 
-- [SC 1.4.4](https://www.w3.org/WAI/WCAG21/Understanding/resize-text) (Level AA)
-- Resize text up to 200% without loss  
-of content or functionality
+You should be able to resize text upwards of 200%, but it should be done in a way that no information or functionality is lost. This can happen when images overlap text or text is clipped.
 
-You should be able to resize text upwards of 200%, but it should be done in a way that no information is lost. This can happen when images overlap text or text is clipped.
-
-### Avert horizontal scrolling
-
-- [SC 1.4.10](https://www.w3.org/WAI/WCAG21/Understanding/reflow) (Level AA)
-- Don't require horizontal scrolling  
-when viewport is 320px.
-
-Scrolling primarily happens vertically. When the viewport of the device is smaller, try to make the content adaptable enough to avert horizontal scrolling. Scrolling in two directions is tricky, so try to avoid it. This gets challenging with content like tables, but there are techniques than can be explored which help.
+See: [SC 1.4.4](https://www.w3.org/WAI/WCAG21/Understanding/resize-text)
 
 ### Layout
 
-- [SC 1.4.8](https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation) (Level AAA)
+To improve typographical layout, aim for:
+
 - **Line length:** 80 characters or less
 - **Line spacing:** 150% or more
 - **Paragraph spacing:** 250% or more
 - **Text alignment:** Not justified
 
-To improve layout, aim for line length that is about 80 characters or less. Be generous with line spacing, setting it to about 150%. Set paragraph spacing greater than line spacing, about 250%. In general, default to left-aligned text for English content and don't use justified text on the web.
+Scrolling in two directions is tricky, so try to avoid it. This gets challenging with content like tables, but there are techniques that you can further research which help. Since scrolling primarily happens vertically, try to make the content adaptable enough so it averts horizontal scrolling when the device is small (such as `320px` wide).
 
-### Don't cut off or overlap text
+Don't cut off or overlap text. This can can happen when the user zooms in or sets custom styles in the browser.
 
-- [SC 1.4.12](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing) (Level AA)
-- Adapt content to user-defined layout settings
+See: [SC 1.4.8](https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation), [SC 1.4.10](https://www.w3.org/WAI/WCAG21/Understanding/reflow), [SC 1.4.12](https://www.w3.org/WAI/WCAG21/Understanding/text-spacing)
 
-Don't cut off or overlap text. Again this can also happen when you are zooming and pinching in. It can also happen when some users have different defaults for their styles in the browser.
-
-### Rivet CSS
-
-- Color
-- Spacing
-- Typography
-- Visibility
-
-The Rivet Design System is used for both applications and websites. There's a number of things that it provides that can address some of these accessibility issues mentioned, such as color, spacing, topography, and content visibility.
-
-### Rivet color
-
-- [Color documentation](https://rivet.uits.iu.edu/utilities/color/)
-- **Text:** `.rvt-color-green`
-- **Background:** `.rvt-bg-green-100`
-- Contrast checker (Levels AA/AAA)
-
-In terms of Rivet color, you can use rvt-color-[the particular color] to put in the the text color. You can also use a background utility class for doing background colors. The documentation includes a contrast checker which you can set to check any two Rivet colors against each other. It will say if the chosen colors pass AAA requirements, AA requirements, or neither of these requirements.
-
-### Rivet spacing
-
-- [Gap](https://rivet.uits.iu.edu/utilities/gap/) and [spacing](https://rivet.uits.iu.edu/utilities/spacing/) documentation
-- **Gap:** `.rvt-gap-col-sm`
-- **Margin:** `.rvt-m-top-md`
-- **Padding:** `.rvt-p-left-lg`
-
-Rivet also has some spacing utilities, to change margin, padding, or the new gap property for CSS grid and flexbox.
-
-### Rivet typography
-
-- [Typography documentation](https://rivet.uits.iu.edu/utilities/typography/)
-- **Font size:** `.rvt-ts-md` (26px)
-- **Line height:** `1.5` by default
-- **Content:** `.rvt-prose`
-
-Concerning typography, there are provided font sizes. For example, for .rvt-ts-md, "ts" stands for "type scale" and "md" stands for "medium" or 26-point font. The body is by default 1.5 line length, which matches the 150% line spacing requirement. The .rvt-prose will automatically style a chunk of content, without needing to explicitly style individual parts.
-
-### Rivet visibility
-
-- [Visibility documentation](https://rivet.uits.iu.edu/utilities/visibility/)
-- **Screen readers only:** `.rvt-sr-only`
-- **Hide for all:** `.rvt-display-none`
-
-The Rivet visibility utilities allows you to control the visibility of content. Some content may be hidden to sighted users but announced by screen readers. Some content may be hidden to all users.
+---
 
 ## Usable writing is navigable
 
-When landing on a webpage, you need to get oriented, move around, and navigate to other pages. This can be done with titles, headings, landmarks, and links.
+When landing on a webpage, you need to get oriented, move around, and navigate to other pages. This can be done with page titles, headings, landmarks, and links.
 
 ### Page title
 
-Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).
+The page title is the first piece of content presented to a user. This is what is displayed on a browser tab.
 
-Example: `Employee Center | All IU Campuses | One.IU`
+Page titles typically consistent of multiple parts. It starts with a description of the page, gets more broad, and eventually labels the brand name of the site. That first part usually should match the primary heading of the page (`<h1>`).
+
+The parts should be separated with some character, such as a dash (`-`), pipe (`|`), or bullet (`·`).
+
+<Figure>
+- **Pattern:** `[Heading] | [Section] | [Brand]`
+- **Example:** `Garden plants | Community Garden | Townsburg, USA`
+</Figure>
 
 See: [SC 2.4.2](https://www.w3.org/WAI/WCAG21/Understanding/page-titled)
 
-<ul>
-	<li>
-		<p>**Page title:** Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).</p>
-		<p>Example: `Employee Center | All IU Campuses | One.IU`</p>
-		<p>See: [SC 2.4.2](https://www.w3.org/WAI/WCAG21/Understanding/page-titled)</p>
-	</li>
-	<li>
-		<p>**Headings:** Headings should be used, starting with the h1 element ("heading level 1"). The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.</p>
-		<p>See: [SC 2.4.6](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels), [SC 2.4.10](https://www.w3.org/WAI/WCAG21/Understanding/section-headings)</p>
-	</li>
-</ul>
+### Headings
 
+Headings should start with the `<h1>` element ("heading level 1"). The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.
 
-- **Page title:** Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).
-- **Headings:** Headings should be used, starting with the h1 element, which stands for "heading level 1". The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.  
+<CodeFigure>
+```html
+<h1>Garden plants</h1>
+
+<h2>Pepper</h2>
+<!-- Pepper-related content -->
+
+<h2>Squash</h2>
+<!-- Squash-related content -->
+```
+</CodeFigure>
+
 See: [SC 2.4.6](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels), [SC 2.4.10](https://www.w3.org/WAI/WCAG21/Understanding/section-headings)
 
-<dl>
-	<dt>Page title</dt>
-	<dd>Parts of title should be ordered from more specific to less specific. Use a consistent delimiter between parts of the title (`-`, `|`, `·`).</dd>
-	<dd>Example: `Employee Center | All IU Campuses | One.IU`</dd>
-	<dd>See: [SC 2.4.2](https://www.w3.org/WAI/WCAG21/Understanding/page-titled)</dd>
-	<dt>Headings</dt>
-	<dd>Headings should be used, starting with the `h1` element ("heading level 1"). The heading levels should stay consistent, in the right order and not skipped. They should proceed the content it describes. Its description should be relevant for its content. It should be succinct.</dd>
-	<dd>See: [SC 2.4.6](https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels), [SC 2.4.10](https://www.w3.org/WAI/WCAG21/Understanding/section-headings)</dd>
-</dl>
+### Landmarks
+
+Many HTML elements have an implicit meaning. They are "landmark" elements which means they help users of assistive technology to navigate a page. It helps them to skip to major sections of content, like the header/banner at the start of the page, the main content area, or the footer at the end of the page.
+
+| Element | Implicit role |
+| :-- | :-- |
+| `<header>` | banner |
+| `<nav>` | navigation |
+| `<main>` | main |
+| `<aside>` | complementary |
+| `<footer>` | contentinfo |
+
+Landmarks should be labeled when there are multiple landmarks of the same kind on a page. This makes them distinct.
+
+In the following example, there are two areas of navigation. The primary navigation doesn't have a visible label, so the attribute `aria-label` is used to just explicitly label it as "primary" for assistive technology users. The second navigation has the visible label "On this page" as a heading level 2. In this case, the nav's label is determined by using the `aria-labelledby` attribute, referencing the heading. The `main` element doesn't need a label, because there should ever only be one of those.
+
+<CodeFigure>
+```html
+<nav aria-label="Primary">…</nav>
+<main>
+	<h1>…</h1>
+	<nav aria-labelledby="nav1">
+		<h2 id="nav1">On this page</h2>
+		…
+	</nav>
+	…
+</main>
+```
+</CodeFigure>
+
+See: [SC 2.4.1](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks), [Technique ARIA11](https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA11)
+
+### Links
+
+The links used in "On this page" navigation are examples of skip links. They jump the page to another section of content. Skip links are also used at the start of a page, so that a keyboard user has the option to, for example, skip to the main content. This is useful for when someone is already familiar with the header/banner at the start of all the pages on a site. These skip links are typically visually hidden until they have keyboard focus.
+
+<CodeFigure>
+```html
+<a href="#main">
+	Skip to main content
+</a>
+```
+</CodeFigure>
+
+A person should understand the purpose of a link by its surrounding context. However, links can be better if written such that the surrounding context is not needed.
+
+For example, the link "learn more" requires the nearby text "about grow bag gardening" to understand what it is about.
+
+It is better to simply have the link text "grow bag gardening."
+
+<Figure>
+- **Context needed:** <u>Learn more</u> about grow bag gardening
+- **Better:** <u>Grow bag gardening</u>
+</Figure>
+
+For this next example, the text says "Tap the Search icon in the upper nav". There is no link. You have to guess what it means, and hopefully you already noticed the search icon elsewhere on the page.
+
+It is better to write "Use Search to find gardening tutorials". "Search" is a link to start a new search. "Gardening tutorials" is a link to the search results for gardening tutorials. That text is also an example of what to search for.
+
+<Figure>
+- **Context needed:** Tap the Search icon in the upper nav
+- **Better:** Use <u>Search</u> to find <u>gardening tutorials</u>
+</Figure>
+
+See: [SC 2.4.1](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks), [SC 2.4.4](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context), [SC 2.4.9](https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only)
+
+---
 
 ## Usable writing is clear
 
+Improving clarity and using plain language is not dumbing down the content. It is opening it up to wider audience.
+
+We can make our writing more clear by paying attention to language, unusual words, pronunciation, reading level, and consistency.
+
+### Language
+
+All pages should define the primary language of its text by using the `lang` attribute on the `<html>` element. In the case of English language content, use the `en` value. This helps text-to-speech software more accurately pronounce content.
+
+<CodeFigure>
+```html
+<html lang="en">
+```
+</CodeFigure>
+
+Where subsets of text differ from the page's primary language, use a different `lang` value on the containing element.
+
+<CodeFigure>
+```html
+<!-- German -->
+<p lang="de">Deutsch</p>
+
+<!-- Italian -->
+<p lang="it">Italiano</p>
+
+<!-- French -->
+<p lang="fr">Français</p>
+```
+</CodeFigure>
+
+See: [SC 3.1.1](https://www.w3.org/WAI/WCAG21/Understanding/language-of-page), [SC 3.1.2](https://www.w3.org/WAI/WCAG21/Understanding/language-of-parts)
+
+### Unusual words
+
+There are many categories of words that we use which may be challenging for someone to understand, such as:
+
+- Multiple definitions ("gig")
+- [Jargon](https://en.wikipedia.org/wiki/Jargon) ("code blue" is for medical professionals)
+- Slang ("shiner" is a black eye)
+- [Idioms](https://en.wikipedia.org/wiki/English-language_idioms) ("hot potato" is a controversial issue)
+- Acronyms ("ROI" means Return On Investment)
+- Abbreviations ("lb." means pounds)
+
+These words should be defined so users know what they mean in the given context. Or even better, the content could be written so these words are never needed.
+
+Where a word is defined inline on a page, wrap the word in a `<dfn>` ("definition") element. In this example, the text is "A basil plant is an aromatic annual herb of the mint family" and "basil plant" is wrapped in the `<dfn>` element.
+
+<CodeFigure>
+```html
+<p>A <dfn>basil plant</dfn>
+is an aromatic annual herb
+of the mint family.</p>
+```
+</CodeFigure>
+
+Definitions can also be curated in a glossary. Words can be linked to the terms on the same page or another page. In this example, the word "basil" links to its definition in a glossary section near the end of the page. The `<dl>` ("description list") element is the appropriate container to use for a set of key-value pairs. The link references the `<dt>` ("description term") element.
+
+<CodeFigure>
+```html
+<p>…<a href="#def-basil">basil</a>…</p>
+<h2>Glossary</h2>
+<dl>
+	<dt id="def-basil">Basil</dt>
+	<dd>…</dd>
+</dl>
+```
+</CodeFigure>
+
+Abbreviations can be defined or expanded inline. For the following example, the rest of the page can freely use the abbreviations "IU" and "GPA" because they have been declared.
+
+> First-year applicants of Indiana University (IU) must have a minimum GPA (grade point average) of 2.5.
+
+Abbreviations can be declared with the `<abbr>` element. In the following example, "IU v. OSU" contains three abbreviations which can be individually expanded to mean "Indiana University verses Ohio State University."
+
+<CodeFigure>
+```html
+<abbr title="Indiana University">
+	IU
+</abbr>
+<abbr title="verses">v.</abbr>
+<abbr title="Ohio State University">
+	OSU
+</abbr>
+```
+</CodeFigure>
+
+See: [Technique H54](https://www.w3.org/WAI/WCAG21/Techniques/html/H54), [Technique G55](https://www.w3.org/WAI/WCAG21/Techniques/general/G55), [Technique G97](https://www.w3.org/WAI/WCAG21/Techniques/general/G97), [Technique H28](https://www.w3.org/WAI/WCAG21/Techniques/html/H28)
+
+### Pronunciation
+
+Some words can be troublesome to pronounce. Like unusual words, their pronunciation can be expanded inline or linked to.
+
+For example, at Indiana University, the NameCoach tool allows students to [record themselves speaking their name](https://kb.iu.edu/d/appu). This can be listened to in Canvas (a learning management system), so the instructor or classmates can know how to properly speak their name.
+
+See: [SC 3.1.6](https://www.w3.org/WAI/WCAG21/Understanding/pronunciation)
+
+### Reading level
+
+If you know your audience, then you should know how to write for them, using the language they know.
+
+For example, if your audience is alumni, you know they have a college reading level, and they will have the experience of going through an academic institution.
+
+If you are writing for general audiences, use common words, short words, and short sentences. This also helps readers with cognitive impairments or those in which English is not their primary language. This writing should be at a middle school reading level (grades 7, 8, 9).
+
+Note: There are readability tests that can be used to help reduce the reading level. However, they are predictions not guarantees of how understandable any given text is.
+
+See: [SC 3.1.5](https://www.w3.org/WAI/WCAG21/Understanding/reading-level)
+
+### Consistency
+
+Use words consistently and predictably.
+
+For example, if the search field in the website's header does the same thing on every page, the submit button should be labeled the same way on all those pages. Don't label it "Search" on one page, "Find" on another page, and "Go" on a third page.
+
+However, if making the text consistent reduces clarity, then it is better to be inconsistent.
+
+See: [SC 3.2.4](https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification)
+
+---
+
 ## Usable writing is concise
+
+A person says aloud 120 to 150 words per minute on average. In contrast, screen reader users commonly configure their [reading speed to be several times faster](https://boingboing.net/2017/08/28/this-blind-software-developer.html).
+
+| Speaker | Words per minute |
+| :-- | :-- |
+| Person | 120–150 |
+| Screen reader | 450 (3 times faster) |
+
+Given this, extra content is okay if it is needed to be clear.
+
+When clarity is no longer the issue, then be concise: Shorten content. Break up content. Disclose content.
+
+### Shorten content
+
+Look for useless information. Limit the purpose of a page, to limit the information needed. This will clarify the particular context, facts, and requirements that should be displayed on any given page. If it doesn't help the user accomplish their purpose for visiting a page, it is a distraction that should be removed.
+
+Many prepositional phrases can be shortened with fewer words. For example:
+
+| Don't say | Say |
+| :-- | :-- |
+| a number of | several, a few, many |
+| is able to | can |
+| in order to | to |
+| on a yearly basis | yearly |
+
+Some adverbs don't add value and can [generally be eliminated](https://prowritingaid.com/Adverbs), such as: definitely, extremely, really, truly, and very.
+
+Use active voice instead of passive voice. This will clarify the responsibilities of the subject in the sentence with pronouns and sometimes shorten the sentence length. For example:
+
+| Passive voice | Active voice |
+| :-- | :-- |
+| It was done. | We did it. |
+| It was done by them. | They did it. |
+| It must be done. | You must do it. |
+
+### Break up content
+
+Break up long blocks of content to make it easier to skim and understand:
+
+- Break up sentences containing long lists into into bulleted lists.
+- Break up similar data points into tables.
+- Break up long paragraphs into multiple paragraphs.
+- Break up related content into sections with headings.
+
+### Disclose content
+
+Some content may be helpful to some users but an annoyance to other users. Allow users to opt in to seeing additional content with accordions, disclosures, or links.
+
+---
+
+## Activities for usable writing
+
+The following are four solo and research activities for making your writing more usable. Follow this format:
+
+1. Conduct the activity.
+2. Analyze the results.
+3. Adjust the content.
+4. Try the activity again to confirm there was improvement.
+
+### Read aloud (solo)
+
+Read aloud content to see how natural the writing sounds. If it sounds odd or unnatural, then change the wording and try again.
+
+### Readability testing (solo)
+
+The [Hemingway Editor](https://hemingwayapp.com) is a tool that suggests how to simplify the reading level of a text sample. As you type, it will highlight adverbs, use of passive voice, and long sentences. The paid version helps you make corrections with artificial intelligence.
+
+### Paraphrase testing (5 to 9 participants)
+
+Conduct [paraphrase testing](https://www.plainlanguage.gov/guidelines/test/paraphrase-testing/) to understand how participants interpret or misunderstand the content. Participants should:
+
+- read a section of content
+- paraphrase the content in their own words
+
+### Content testing (5 to 9 participants)
+
+Conduct content testing to evaluate the helpfulness of content. Participants should:
+
+- circle content that is helpful
+- underline content that is confusing or not helpful

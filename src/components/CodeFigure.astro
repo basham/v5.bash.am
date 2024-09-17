@@ -24,8 +24,11 @@ const { label } = Astro.props;
 		padding: 1em;
 	}
 
+	:global(figure:has(pre.astro-code:focus)) {
+		border-color: var(--color-link);
+	}
+
 	:global(figure pre.astro-code:focus) {
-		outline: var(--2px) solid var(--color-link);
-		outline-offset: calc(var(--4px) * -1);
+		outline: none;
 	}
 </style>
