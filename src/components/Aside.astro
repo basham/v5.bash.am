@@ -1,6 +1,15 @@
+---
+import { uniqueId } from '@util/uniqueId';
+const { label } = Astro.props;
+const labelId = uniqueId();
+---
+
 <div class="u-grid-aside">
-	<aside>
-		<slot />
+	<aside aria-labelledby={label ? labelId : undefined}>
+		{label && <div id={labelId} class="label">{label}</div>}
+		<div class="content">
+			<slot />
+		</div>
 	</aside>
 </div>
 
@@ -9,6 +18,15 @@
 		border: var(--border);
 		border-radius: var(--4px);
 		margin-top: var(--16px);
-		padding: 0 var(--16px) var(--16px);
+		padding: var(--2px);
+	}
+
+	.label {
+		background-color: var(--color-border);
+		padding: 0.5em 1em;
+	}
+
+	.content {
+		margin: 1em;
 	}
 </style>

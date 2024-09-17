@@ -16,6 +16,8 @@ This article outlines three warning signs to look out for, their effect on the u
 2. [Warning: Loading indicators on page load](#warning-loading-indicators-on-page-load)
 3. [Warning: Page does not reload or redirect when submitting a form](#warning-page-does-not-reload-or-redirect-when-submitting-a-form)
 
+---
+
 ## Warning: Paths after the hash (#) in the URL
 
 Client-side routing is a technique meant to increase the speed of navigation by having JavaScript transform the page instead of waiting for a response from the server. This can be useful if the browser already has all the data it needs to render the page. However, this technique tends to create more problems than it solves, and it is difficult to correctly implement. As such, product teams should expand typical testing scenarios.
@@ -92,6 +94,8 @@ const main = document.getElementById('main');
 main.innerHTML = html;
 ```
 </CodeFigure>
+
+---
 
 ## Warning: Loading indicators on page load
 
@@ -180,6 +184,8 @@ In the meantime, consider what on the page is truly interactive or needs dynamic
 - Try rendering substantial sections of static content with the server.
 - Try embedding multiple, small JavaScript apps on the page, only where dynamic content is needed.
 
+---
+
 ## Warning: Page does not reload or redirect when submitting a form
 
 The default behavior of a form submission results in a call to the server. The server then responds with redirecting or reloading the page. Creating a new document may open that document. Purchasing a product may redirect the user to a confirmation page. Changing filters on a search page may reload the current page with the new applied values.
@@ -246,6 +252,8 @@ When the form is submitted with this GET method:
 1. The form data is automatically serialized into a query string (`?gardenId=abc123&season=spring&show=favorites`).
 2. Without an explicit "action" attribute on the form, the query string is applied to the current page, causing a refresh.
 3. The server renders the page with the requested data. That data could be embedded in the HTML (see the previous Warning section).
+
+---
 
 ## Conclusion
 

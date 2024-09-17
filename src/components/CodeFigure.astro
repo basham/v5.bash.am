@@ -3,7 +3,7 @@ const { label } = Astro.props;
 ---
 
 <figure>
-	{label && <figcaption>{label}</figcaption>}
+	{label && <figcaption set:html={label}></figcaption>}
 	<slot />
 </figure>
 
