@@ -1,0 +1,219 @@
+---
+title: Writing should be kind
+pubDate: 2024-08-24
+description: "…"
+draft: true
+---
+
+import Aside from '@components/Aside.astro';
+import Figure from '@components/Figure.astro';
+
+<Aside label="UX writing series">
+1. [Writing should be useful](/2024-08-20/useful)
+2. [Writing should be usable](/2024-08-22/usable)
+3. Writing should be kind
+
+Workshop: [Writing for Product Teams](https://github.com/basham/swit-workshop-writing) (2024)
+</Aside>
+
+…
+
+---
+
+## Kind writing is helpful
+
+### Stress cases
+
+We should stop using the term "edge case." This is a way to dismiss a group of users. Similarly, do not blame users, even if it is their fault. Blaming doesn't help them meet their goals.
+
+Instead of using the term "edge cases," use "stress cases." This emphasizes emotion. Consider the user's emotional state and their emotional journey while using the digital product. Consider how the words they encounter in your digital product impact their life outside of that experience.
+
+We should help users get things done despite the stress they already have in their lives. Hopefully the interaction they have in our digital products won't increase that stress.
+
+### Errors
+
+Errors will happen. Anticipate them. Then you can try to handle them gracefully by: Avoiding them, explaining them, and resolving them.
+
+Here are some ways to avoid errors from happening:
+
+- Provide instructions explaining what to expect or how to operate something.
+- List and constrain the available options, so it is not open-ended. Use check boxes or radio buttons.
+- Place any requirements of an input field before the input field. Don't place it after it or wait until the form is submitted.
+
+For example, if the instructions "password must include a symbol" is placed after the password field, then the user may not see the requirement until after they tried to enter a password. If it is placed before it, the user has a greater chance of success on the first try.
+
+<Figure>
+New password: **abc123**
+
+*Password must include a symbol*
+</Figure>
+
+Some errors can't be avoided. When this happens:
+
+- Display a clear and concise message.
+- Reassure users concerning loss of time or data if possible.
+- Link to pages that contain more information which may help users understand what's happening.
+
+After explaining an error, then if possible list the options they have to move forward. Help them make progress toward reaching their goal.
+
+For example, the "page not found" error is common. Don't display only "404." Don't blame the user for landing on a page that doesn't exist. Instead, be personal, be direct, and help them move forward.
+
+<Figure>
+We couldn't find the article you're looking for.
+
+Try to <u>search for the article</u> or <u>explore articles by category</u>.
+</Figure>
+
+---
+
+## Kind writing is inclusive
+
+The words we use should make people feel included and welcome. But as the book *Writing is Designing* states:
+
+> If the language you use tells a potential user that *you didn't think about their experience when building this thing*, they're not going to use it.
+
+The [Conscious Style Guide](https://consciousstyleguide.com) offers articles and resources that covers many aspects of inclusive practices, such as:
+
+- Ability, disability
+- Age
+- Appearance
+- Ethnicity, race, nationality
+- Gender, sex, sexuality
+- Health
+- Socioeconomic status
+- Spirituality, religion, atheism
+
+For this article, I will focus on just two aspects: How we can be considerate of the choices people make regarding their technology and identity.
+
+## Technology
+
+Content stacks vertically on mobile devices and content is read linearly when announced by a screen reader. As such, prefer chronological words like "beginning" or "before" over spatial words like "top" and "left."
+
+| Spatial | Chronological |
+| :-- | :-- |
+| Top | Beginning |
+| Bottom | End |
+| Left | Before |
+| Right | After |
+
+In general, do not use words that describe what the user should do with their device, such as:
+
+- Click a mouse
+- Tap the screen
+- Press a button
+- See the printout
+
+Instead, use words that describe the action the user wants to do with the interface, such as:
+
+- Choose an option
+- Select text
+- Use search
+- View more details
+
+Don't tie a tool or product to a role. Instead, describe how a tool or product can benefit the user when trying to accomplish a task. This wording change invites everyone to participate, regardless of their experience.
+
+| Don't say | Say |
+| :-- | :-- |
+| Saws are for carpenters. | Saws help you to shape wood. |
+
+### Identity
+
+The word "they" is a neutral way to talk about a person because it doesn't imply a gender. So, rather than writing something clunky like "she/he" or "(s)he," just say "they."
+
+Don't assign value (especially negative value) to things that describe a person. Just state the facts in a neutral way.
+
+| Don't say | Say |
+| :-- | :-- |
+| (S)He will be in touch. | They will be in touch. |
+| wheelchair-bound | wheelchair user |
+| suffers from autism | has autism |
+
+Respect how people identity themselves. For example, the book *Writing is Designing* talked about an accomplished national athlete named Nina. She said:
+
+> I hope that I'm inspiring because I worked really hard to be a good [basketball] player. Not because I use a wheelchair.
+
+---
+
+## Kind writing is conversational
+
+Writing that is conversational is context-aware, is polite, and has personality.
+
+### Context-aware
+
+Writing that is context-aware is sensitive to circumstances, such as time of day, location of the user, and any preferences the user has set.
+
+For example, a person's phone may be aware that they are going to a movie theater this evening, according to their calendar. Before leaving, the phone asks if silent mode should be turned on once they arrive, in order to avoid disturbing others during the movie.
+
+<Figure>
+**Phone notification:** Would you like to automatically turn on Silent Mode when you arrive at the movie theater?
+</Figure>
+
+In contrast, a system can cause emotional distress if it does not tailor messaging for the situation.
+
+For example, an event platform that assumes that all events are a joyous occasion is [insensitive to situations like a memorial](https://cloudfour.com/thinks/handling-death-gracefully-in-digital-experiences/) arranged for friends and family of someone who recently died.
+
+<Figure>
+**Email:** Exciting news! You have been invited to "Celebrating the life of Jack." RSVP now!
+</Figure>
+
+### Polite
+
+Writing that is polite respects the user's time and anticipates needs.
+
+For example, a prompt from a utility service could encourage the user to set up auto bill payment.
+
+<Figure>
+**Utility service:** Would you like to set up auto-payment? We will email you a week before the monthly bill is due, so you have time to contact us about it before you are charged.
+</Figure>
+
+Writing that is not polite wastes time, imposes, or is rude.
+
+For example, a person is reading an article when an unprompted popup appears. Its close button is tiny and hard to see.
+
+<Figure>
+**Popup:** Spin this wheel to win!
+
+**Person:** I'm just trying to read this article! I can't find the close button!
+</Figure>
+
+### Personality
+
+Writing can also have personality. This is often spoken of in the terms "voice and tone."
+
+- **Voice:** What is said (information)
+- **Tone:** How it is said (emotion)
+
+The particular style of tone depends on the audience, the context, and the values the organization is conveying. Some tones will be used more than others. Not all tones will be used. Here are some example styles: 
+
+- Encouraging
+- Friendly
+- Informational
+- Reassuring
+- Supportive
+- Sympathetic
+- Trustworthy
+
+Different tone styles will direct the word and phrase choices you make and the structure of the sentences you write. A little goes a long way, so don't overdo it. Keep it simple.
+
+Here are samples of how tone is reflected in a message:
+
+| Tone style | Sample |
+| :-- | :-- |
+| Informational | Item deleted |
+| Reassuring | You can restore deleted items from the trash bin for the next 30 days. |
+| Trustworthy | We keep your data encrypted and secure. We can't see it. We won't sell it. It is yours forever. |
+
+---
+
+## Activities for kind writing
+
+https://go.iu.edu/7TRd
+
+1. Make the conversation messy
+2. Contemplate the emotional journey
+
+---
+
+## Make your writing useful, usable, kind
+
+As you leave, think about how you can make your writing more useful, usable, and kind. Thank you for your time and attention.
