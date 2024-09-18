@@ -229,11 +229,8 @@ ul {
 	padding: 0 0 0 1.5em;
 }
 
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-	margin-top: 0;
+:is(ol, ul) :is(ol, ul) {
+	margin-top: 0.5em;
 }
 
 pre > code {
