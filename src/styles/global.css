@@ -189,9 +189,10 @@ li:not(:first-child) {
 }
 
 main {
-	display: grid;
+	_display: grid;
 	grid-template-columns: repeat(auto-fill, 12em);
 	text-wrap: pretty;
+	_max-width: 40em;
 }
 
 main::after {
@@ -208,7 +209,9 @@ main::after {
 
 main::after,
 main > * {
-	grid-column: 1 / 4;
+	_grid-column: 1 / 4;
+	_grid-column: 1 / -1;
+	max-width: 40em;
 }
 
 mark {
@@ -241,8 +244,10 @@ table {
 	border: var(--border);
 	border-radius: var(--4px);
 	border-spacing: 0;
+	display: block;
+	max-width: fit-content;
+	overflow-x: auto;
 	padding: var(--2px);
-	width: 100%;
 }
 
 td,
