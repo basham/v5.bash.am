@@ -45,7 +45,13 @@
 	--fs-1: calc(18rem/16);
 	--fs-2: 1.5rem;
 	--fs-3: 2rem;
-	--fs-4: 3rem;
+	--fs-4: clamp(2.5rem, 1rem + 5vw, 3rem);
+
+	--fs-0x: min(calc(calc(14rem/16) + 5vw), 1rem);
+	--fs-1x: min(calc(1rem + 5vw), calc(18rem/16));
+	--fs-2x: min(calc(1.25rem + 5vw), 1.5rem);
+	--fs-3x: min(calc(1.75rem + 5vw), 2rem);
+	--fs-4x: min(calc(2rem + 5vw), 3rem);
 
 	--font-main: "Libre Franklin Variable", sans-serif;
 	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
@@ -60,6 +66,8 @@
 	--col-2-size: calc(var(--col-size) + var(--col-gap) + var(--col-size));
 	--col-3-size: calc(var(--col-2-size) + var(--col-gap) + var(--col-size));
 	--page-size: calc(var(--col-3-size) + var(--col-gap) + var(--col-2-size));
+
+	--indent: 1.5em;
 }
 
 *, *::before, *::after {
@@ -100,9 +108,10 @@ a:visited {
 }
 
 blockquote {
+	--bw: calc(var(--border-width) * 2);
 	border-left: calc(var(--border-width) * 2) solid var(--color-border);
 	margin: 0;
-	padding: 0 0 0 1em;
+	padding: 0 0 0 calc(var(--indent) - var(--bw));
 }
 
 blockquote :first-child {
@@ -121,7 +130,7 @@ pre {
 }
 
 dd {
-	margin: 0;
+	margin-left: var(--indent);
 }
 
 dt {
@@ -147,7 +156,7 @@ figcaption {
 
 h1, h2, h3, h4, hr {
 	font-weight: bold;
-	margin-top: 1.5em;
+	margin-top: clamp(1em, 0.5em + 5vh, 2em);
 	text-wrap: balance;
 }
 
@@ -207,7 +216,7 @@ mark::after {
 
 ol,
 ul {
-	padding: 0 0 0 1.5em;
+	padding: 0 0 0 var(--indent);
 }
 
 :is(ol, ul) :is(ol, ul) {
@@ -252,7 +261,7 @@ th {
 
 .list-inline {
 	display: flex;
-	gap: 1.5em;
+	gap: var(--indent);
 	list-style-type: "";
 	padding: 0;
 }
