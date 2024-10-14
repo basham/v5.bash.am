@@ -67,7 +67,7 @@
 	--col-3-size: calc(var(--col-2-size) + var(--col-gap) + var(--col-size));
 	--page-size: calc(var(--col-3-size) + var(--col-gap) + var(--col-2-size));
 
-	--indent: 1.5em;
+	--indent: calc(1em + var(--border-width) * 2);
 }
 
 *, *::before, *::after {
@@ -108,10 +108,9 @@ a:visited {
 }
 
 blockquote {
-	--bw: calc(var(--border-width) * 2);
 	border-left: calc(var(--border-width) * 2) solid var(--color-border);
 	margin: 0;
-	padding: 0 0 0 calc(var(--indent) - var(--bw));
+	padding: 0 0 0 1em;
 }
 
 blockquote :first-child {
@@ -257,22 +256,6 @@ th {
 
 .condensed p {
 	margin-top: 0.5em;
-}
-
-.list-inline {
-	display: flex;
-	gap: var(--indent);
-	list-style-type: "";
-	padding: 0;
-}
-
-.list-inline--center {
-	justify-content: center;
-}
-
-.list-inline > * {
-	flex-wrap: wrap;
-	margin: 0;
 }
 
 .list-plain {
