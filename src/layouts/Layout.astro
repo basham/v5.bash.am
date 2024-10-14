@@ -6,7 +6,7 @@ import PublishedDate from '@components/PublishedDate.astro';
 import Header from '@components/Header.astro';
 import { SITE_TITLE } from '@src/consts';
 
-const { frontmatter = {} } = Astro.props;
+const { frontmatter = {}, type = 'default' } = Astro.props;
 const { pubDate, title } = frontmatter
 ---
 
@@ -17,9 +17,17 @@ const { pubDate, title } = frontmatter
 	<body>
 		<Header title={title} />
 		<main>
+		{type === 'default' &&
 			<h1>{title || SITE_TITLE}</h1>
-			<PublishedDate date={pubDate} />
 			<slot />
+		}
+		{type === 'note' &&
+			<article>
+				<h1>{title || SITE_TITLE}</h1>
+				<PublishedDate date={pubDate} />
+				<slot />
+			</article>
+		}
 		</main>
 	</body>
 </html>

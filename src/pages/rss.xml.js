@@ -4,7 +4,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { slugFromPost } from '@util/slugFromPost.js'
 
 export async function GET(context) {
-	const posts = await getCollection('writings');
+	const posts = await getCollection('notes');
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,

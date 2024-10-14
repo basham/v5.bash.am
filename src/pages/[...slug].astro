@@ -4,7 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import { slugFromPost } from '@util/slugFromPost';
 
 export async function getStaticPaths() {
-	return (await getCollection('writings'))
+	return (await getCollection('notes'))
 		.filter(({ data }) => import.meta.env.PROD ? !data.draft : true)
 		.map((post) => {
 			const slug = slugFromPost(post)
@@ -19,6 +19,6 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout frontmatter={post.data}>
+<Layout frontmatter={post.data} type="note">
 	<Content />
 </Layout>

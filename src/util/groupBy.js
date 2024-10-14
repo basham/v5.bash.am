@@ -1,4 +1,4 @@
-export function groupBy(source, selectorOrKey) {
+export function groupBy (source, selectorOrKey) {
 	const selector = typeof selectorOrKey === 'string' ? (item) => item[selectorOrKey] : selectorOrKey
 	const m = source.reduce((map, item) => {
 		const group = selector(item);
@@ -8,5 +8,5 @@ export function groupBy(source, selectorOrKey) {
 		map.set(group, [...map.get(group), item]);
 		return map;
 	}, new Map());
-	return Object.fromEntries(m);
+	return m;
 }

@@ -43,9 +43,9 @@
 
 	--fs-0: 1rem;
 	--fs-1: calc(18rem/16);
-	--fs-2: calc(20rem/16);
-	--fs-3: calc(24rem/16);
-	--fs-4: calc(32rem/16);
+	--fs-2: 1.5rem;
+	--fs-3: 2rem;
+	--fs-4: 3rem;
 
 	--font-main: "Libre Franklin Variable", sans-serif;
 	--font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
@@ -72,7 +72,7 @@
 
 html {
 	background-color: var(--color-base);
-	padding: 2rem calc(1rem + 2.5vw);
+	padding: 2rem calc(1rem + 2.5vw) calc(var(--fs-4) * 1.5);
 	-webkit-text-size-adjust: 100%;
 }
 
@@ -130,11 +130,6 @@ dt {
 	margin-top: 0.5em;
 }
 
-footer,
-main {
-	margin-top: 2rem;
-}
-
 blockquote,
 dl,
 figure,
@@ -150,34 +145,38 @@ figcaption {
 	font-size: var(--fs-0);
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, hr {
 	font-weight: bold;
-	margin-top: 2em;
+	margin-top: 1.5em;
 	text-wrap: balance;
 }
 
-h1 {
+h1,
+.fs-4 {
 	font-size: var(--fs-4);
-	margin-top: 0;
 }
 
-h2 {
+h2,
+hr:has(+ h2),
+.fs-3 {
 	font-size: var(--fs-3);
 }
 
-h3 {
+h3,
+hr:has(+ h3),
+.fs-2 {
 	font-size: var(--fs-2);
 }
 
-h4 {
+h4,
+hr:has(+ h4),
+.fs-1 {
 	font-size: var(--fs-1);
 }
 
 hr {
 	border: var(--border);
 	border-bottom-width: 0;
-	font-size: var(--fs-3);
-	margin: 2em 0 0;
 }
 
 img {
@@ -191,22 +190,6 @@ li:not(:first-child) {
 
 main {
 	text-wrap: pretty;
-}
-
-main::after {
-	--size: 0.75em;
-	border: var(--2px) solid var(--color-link);
-	border-radius: var(--2px);
-	content: "";
-	display: block;
-	height: var(--size);
-	margin: 2em 0 0;
-	transform: rotate(45deg);
-	width: var(--size);
-}
-
-main > * {
-	max-width: var(--col-3-size);
 }
 
 mark {
@@ -255,6 +238,18 @@ th {
 	font-size: var(--fs-0);
 }
 
+:is(main, article):has(> h1) > *:not(h1, table) {
+	max-width: var(--col-3-size);
+}
+
+.condensed h3 {
+	margin-top: 1em;
+}
+
+.condensed p {
+	margin-top: 0.5em;
+}
+
 .list-inline {
 	display: flex;
 	gap: 1.5em;
@@ -269,6 +264,12 @@ th {
 .list-inline > * {
 	flex-wrap: wrap;
 	margin: 0;
+}
+
+.list-plain {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
 }
 
 mark::before,

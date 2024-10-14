@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { groupBy } from '@util/groupBy';
+import { slugFromPost } from '@util/slugFromPost';
+
+const posts = (await getCollection('notes'))
+	.filter(({ data }) => import.meta.env.PROD ? !data.draft : true)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const postsByYear = groupBy(posts, (post) => post.data.pubDate.getFullYear());
+---
+
+{
+	postsByYear.entries().map(([year, posts]) => (
+		<h2>{year}</h2>
+		<ul class="condensed list-plain">
+		{
+			posts.map((post) => (
+				<li>
+					<h3>
+						<a href={`/${slugFromPost(post)}`}>{post.data.title}</a>
+					</h3>
+					<p>{post.data.description}</p>
+				</li>
+			))
+		}
+		</ul>
+	))
+}
