@@ -10,7 +10,7 @@ const postsByYear = groupBy(posts, (post) => post.data.pubDate.getFullYear());
 ---
 
 {
-	postsByYear.entries().map(([year, posts]) => (
+	[...postsByYear.entries()].map(([year, posts]) => (
 		<h2>{year}</h2>
 		<ul class="condensed list-plain">
 		{
