@@ -5,17 +5,23 @@ config: "ignoreTitle"
 ---
 
 import LatestNotes from '@components/LatestNotes.astro';
-import { SITE_DESCRIPTION, YEARS_OF_EXPERIENCE } from '@src/consts.ts';
+import { SITE_DESCRIPTION_HTML, YEARS_OF_EXPERIENCE } from '@src/consts.ts';
 
-<p>{SITE_DESCRIPTION}</p>
+<p class="fs-2" set:html={SITE_DESCRIPTION_HTML} />
+
+He has over [{YEARS_OF_EXPERIENCE} years of experience](/resume) in [web apps](/web-apps), [design systems](/design-systems), [mentoring](/mentoring), and [speaking](/talks).
+
+Outside of work, he plays [board games](/board-games), listens to [audiobooks](/books) and [podcasts](/podcasts), and runs trails in [sandals](/sandals).
+
+<div class="layout">
+<div class="layout__1-2">
 
 ## Latest notes
 
 <LatestNotes />
 
-<p class="fs-2">
-	<a class="fs-1" href="/notes">All notes</a>
-</p>
+</div>
+<div class="layout__1-2">
 
 ## Latest talk
 
@@ -23,29 +29,9 @@ import { SITE_DESCRIPTION, YEARS_OF_EXPERIENCE } from '@src/consts.ts';
 
 ### [Writing for Product Teams](https://github.com/basham/swit-workshop-writing)
 
-Workshop at [Statewide IT Conference 2024](https://statewideit.iu.edu/)
+Workshop at Statewide IT Conference 2024
 
 </div>
 
-<p class="fs-2">
-	<a class="fs-1" href="/talks">All talks</a>
-</p>
-
-## About
-
-I have over [{YEARS_OF_EXPERIENCE} years of experience](/resume) in:
-
-- [web apps](/web-apps)
-- [design systems](/design-systems)
-- [mentoring](/mentoring)
-- [public speaking](/talks)
-
-Outside of work, I play [board games](/board-games), listen to [audiobooks](/books) and [podcasts](/podcasts), and run trails in [sandals](/sandals).
-
-Learn more about my [purpose statement](/purpose) and [this website](/colophon).
-
-## Contact
-
-- Email me at chris@bash.am.
-- Subscribe to my [RSS feed](/rss.xml).
-- Browse my code on [GitHub](https://github.com/basham) and [CodePen](https://codepen.io/basham).
+</div>
+</div>

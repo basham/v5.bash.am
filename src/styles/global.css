@@ -80,7 +80,7 @@
 
 html {
 	background-color: var(--color-base);
-	padding: 2rem calc(1rem + 2.5vw) calc(var(--fs-4) * 1.5);
+	padding: 0 calc(1rem + 2.5vw);
 	-webkit-text-size-adjust: 100%;
 }
 
@@ -256,6 +256,25 @@ th {
 
 .condensed p {
 	margin-top: 0.5em;
+}
+
+.layout {
+	display: flex;
+	gap: 0 var(--col-gap);
+	flex-wrap: wrap;
+	max-width: unset;
+}
+
+.layout__1-2,
+.layout__2-5,
+.layout__3-5 {
+	flex-basis: calc(var(--col-size) * 2);
+	flex-grow: 1;
+	max-width: var(--col-3-size);
+}
+
+.layout__2-5 {
+	flex-grow: 0;
 }
 
 .list-plain {

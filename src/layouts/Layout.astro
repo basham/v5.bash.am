@@ -2,8 +2,9 @@
 import '@fontsource-variable/libre-franklin';
 import '@fontsource-variable/libre-franklin/wght-italic.css';
 import BaseHead from '@components/BaseHead.astro';
-import PublishedDate from '@components/PublishedDate.astro';
+import Footer from '@components/Footer.astro';
 import Header from '@components/Header.astro';
+import PublishedDate from '@components/PublishedDate.astro';
 import { SITE_TITLE } from '@src/consts';
 
 const { frontmatter = {}, type = 'default' } = Astro.props;
@@ -29,5 +30,6 @@ const { pubDate, title } = frontmatter
 			</article>
 		}
 		</main>
+		<Footer />
 	</body>
 </html>

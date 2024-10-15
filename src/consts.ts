@@ -1,6 +1,7 @@
 const NAME = 'Chris Basham';
 export const SITE_TITLE = NAME;
-export const SITE_DESCRIPTION = `${NAME} designs and develops for the web in southern Indiana. He believes every word, byte, and pixel can improve how we care for each other and the earth.`;
+export const SITE_DESCRIPTION_HTML = `${NAME} designs and develops for the web in southern Indiana. He believes every <a href="/purpose">word, byte, and pixel</a> can improve how we care for each other and the earth.`;
+export const SITE_DESCRIPTION = SITE_DESCRIPTION_HTML.replace(/<[^>]*>/g, '');
 
 const firstYearOfExperience = 2011;
 const firstMonthOfExperience = 6;
