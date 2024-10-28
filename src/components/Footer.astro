@@ -1,50 +1,17 @@
----
-import { SITE_TITLE } from "@src/consts";
----
-
 <footer>
-	<dl>
-		<div>
-			<dt>{SITE_TITLE}</dt>
-			<dd><a href="/">Home</a></dd>
-			<dd><a href="/purpose">Purpose statement</a></dd>
-		</div>
-		<div>
-			<dt>Meta</dt>
-			<dd><a href="/colophon">Colophon</a></dd>
-			<dd><a href="/rss.xml">RSS feed</a></dd>
-		</div>
-		<div>
-			<dt>Elsewhere</dt>
-			<dd><a href="https://github.com/basham">GitHub</a></dd>
-			<dd><a href="https://codepen.io/basham">CodePen</a></dd>
-		</div>
-		<div>
-			<dt>Contact by email</dt>
-			<dd><a href="mailto:chris@bash.am">chris@bash.am</a></dd>
-		</div>
-	</dl>
+	<ul class="fs-0 list-inline">
+		<li><a href="/">Home</a></li>
+		<li><a href="/purpose">Purpose statement</a></li>
+		<li><a href="/colophon">Colophon</a></li>
+		<li><a href="/rss.xml">RSS feed</a></li>
+		<li><a href="/contact">Contact</a></li>
+	</ul>
 </footer>
 
 <style>
 	footer {
 		border-top: var(--border);
 		margin-top: 4rem;
-		padding: 4rem 0;
-	}
-
-	dl {
-		display: grid;
-		gap: 2em;
-		grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-		margin: 0;
-	}
-
-	dt {
-		margin: 0;
-	}
-
-	dd {
-		margin: 0.5em 0 0 0;
+		padding: 2rem 0;
 	}
 </style>

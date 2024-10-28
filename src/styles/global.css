@@ -182,6 +182,10 @@ hr:has(+ h4),
 	font-size: var(--fs-1);
 }
 
+.fs-0 {
+	font-size: var(--fs-0);
+}
+
 hr {
 	border: var(--border);
 	border-bottom-width: 0;
@@ -277,10 +281,22 @@ th {
 	flex-grow: 0;
 }
 
+.list-inline,
 .list-plain {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+
+.list-inline {
+	align-items: center;
+	display: flex;
+	gap: 1em 2em;
+	flex-wrap: wrap;
+}
+
+.list-inline li {
+	margin: 0;
 }
 
 mark::before,
