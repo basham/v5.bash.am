@@ -24,6 +24,9 @@ const pageTitle = [_title, SITE_TITLE].filter((t) => t).join(' - ')
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- Feed -->
+<link rel="alternate" type="application/rss+xml" title="RSS feed" href="/rss.xml" />
+
 <!-- Primary Meta Tags -->
 <title>{pageTitle}</title>
 <meta name="title" content={title} />
