@@ -13,6 +13,6 @@
 		"@astrojs/rss": "4.0.9",
 		"@astrojs/sitemap": "3.2.1",
 		"@fontsource-variable/libre-franklin": "5.1.1",
-		"astro": "4.16.9"
+		"astro": "4.16.10"
 	}
 }
