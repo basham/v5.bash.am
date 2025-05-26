@@ -5,13 +5,13 @@ config: "ignoreTitle"
 ---
 
 import LatestNotes from '@components/LatestNotes.astro';
-import { SITE_DESCRIPTION_HTML, YEARS_OF_EXPERIENCE } from '@src/consts.ts';
+import { NAME, SITE_DESCRIPTION_HTML, YEARS_OF_EXPERIENCE } from '@src/consts.ts';
 
-<p class="fs-2" set:html={SITE_DESCRIPTION_HTML} />
+<p class="fs-2" set:html={`I&rsquo;m ${NAME}. ${SITE_DESCRIPTION_HTML}`} />
 
-He has over [{YEARS_OF_EXPERIENCE} years of experience](/about) in [web apps](/web-apps), [design systems](/design-systems), [mentoring](/mentoring), and [speaking](/talks).
+I have over [{YEARS_OF_EXPERIENCE} years of experience](/about) in [web apps](/web-apps), [design systems](/design-systems), [mentoring](/mentoring), and [speaking](/talks).
 
-Outside of work, he plays [board games](/board-games), listens to [audiobooks](/books) and [podcasts](/podcasts), and runs trails in [sandals](/sandals).
+Outside of work, I play [board games](/board-games), listen to [audiobooks](/books) and [podcasts](/podcasts), and run trails in [sandals](/sandals).
 
 <div class="layout">
 <div class="layout__1-2">
